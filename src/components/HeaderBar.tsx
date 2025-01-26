@@ -4,7 +4,7 @@ import { useState } from "react";
 import { Dialog, DialogPanel } from "@headlessui/react";
 import { HiMiniXMark } from "react-icons/hi2";
 import { FaBars } from "react-icons/fa6";
-import BgLight from "./BgLight";
+import BgLight from "./Small/BgLight";
 import Headroom from "react-headroom";
 
 const navigation = [
@@ -20,9 +20,12 @@ export default function Example() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
-    <Headroom className="" style={{
-      transition: 'transform .5s ease-in-out'
-    }}>
+    <Headroom
+      className=""
+      style={{
+        transition: "transform .5s ease-in-out",
+      }}
+    >
       <div className="bg-transparent backdrop-filter backdrop-blur-lg">
         <header className=" inset-x-0 top-0 z-50 ">
           <nav

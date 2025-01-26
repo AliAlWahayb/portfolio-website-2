@@ -1,14 +1,16 @@
 import React from "react";
 import HeaderBar from "../components/HeaderBar";
 import Hero from "../components/Hero";
+import Skills from "../components/Skills";
+import Projects from "../components/Projects";
 
 const Page: React.FC = () => {
   return (
-    <div className="bg-background-base overflow-hidden" id="rootPage">
+    <div className="bg-background-base overflow-hidden divide-y-8 divide-secondary-base" id="rootPage">
       <HeaderBar />
-
       <Hero />
-      <section className="h-screen border border-white m-10 "></section>
+      <Skills />
+      <Projects />
     </div>
   );
 };
