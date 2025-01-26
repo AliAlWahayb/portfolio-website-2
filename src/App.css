@@ -1,0 +1,89 @@
+@import "tailwindcss";
+
+@theme {
+
+        /* Background Spectrum */
+        --color-background-50: #2e2e2e;
+        --color-background-100: #2a2a2a;
+        --color-background-200: #262626;
+        --color-background-base: #242424; /* Base */
+        --color-background-400: #202020;
+        --color-background-500: #1e1e1e;
+        --color-background-600: #1a1a1a;
+        --color-background-700: #161616;
+        --color-background-800: #121212;
+        --color-background-900: #0e0e0e;
+      
+        /* Text Spectrum */
+        --color-text-50: #f4f4ff;
+        --color-text-100: #dcdcff;
+        --color-text-200: #c4c4ff;
+        --color-text-300: #acacff;
+        --color-text-400: #9494ff;
+        --color-text-base: #646cff; /* Base */
+        --color-text-600: #585bcc;
+        --color-text-700: #4c4b99;
+        --color-text-800: #403c66;
+        --color-text-900: #342c33;
+
+        --color-secondary-text-50: #f3f4f6;   /* Lightest */
+        --color-secondary-text-100: #e5e7eb;
+        --color-secondary-text-200: #d1d5db;
+        --color-secondary-text-300: #9ca3af;
+        --color-secondary-text-400: #6b7280;
+        --color-secondary-text-base: #101828; /* Base */
+        --color-secondary-text-600: #0e1623;
+        --color-secondary-text-700: #0c121e;
+        --color-secondary-text-800: #0a0f19;
+        --color-secondary-text-900: #080c14;  /* Darkest */
+      
+        /* Primary Spectrum */
+        --color-primary-50: #ececff;
+        --color-primary-100: #d8d8ff;
+        --color-primary-200: #bfbfff;
+        --color-primary-300: #a6a6ff;
+        --color-primary-400: #8d8dff;
+        --color-primary-base: #646cff; /* Base */
+        --color-primary-600: #5a5acc;
+        --color-primary-700: #4f4f99;
+        --color-primary-800: #454566;
+        --color-primary-900: #3a3a33;
+      
+        /* Secondary Spectrum */
+        --color-secondary-50: #f6f6ff;
+        --color-secondary-100: #ebebff;
+        --color-secondary-200: #d6d6ff;
+        --color-secondary-300: #c0c0ff;
+        --color-secondary-400: #ababff;
+        --color-secondary-base: #b3b3ff; /* Base */
+        --color-secondary-600: #9d9dcc;
+        --color-secondary-700: #878799;
+        --color-secondary-800: #717166;
+        --color-secondary-900: #5b5b33;
+      
+        /* Card Background Spectrum */
+        --color-card-50: #393939;
+        --color-card-100: #353535;
+        --color-card-200: #313131;
+        --color-card-base: #2d2d2d; /* Base */
+        --color-card-400: #292929;
+        --color-card-500: #252525;
+        --color-card-600: #212121;
+        --color-card-700: #1d1d1d;
+        --color-card-800: #191919;
+        --color-card-900: #151515;
+      
+        /* Accent Spectrum */
+        --color-accent-50: #f5f4ff;
+        --color-accent-100: #eaeaff;
+        --color-accent-200: #d4d4ff;
+        --color-accent-300: #bfbfff;
+        --color-accent-400: #a9a9ff;
+        --color-accent-base: #8a87ff; /* Base */
+        --color-accent-600: #7c78cc;
+        --color-accent-700: #6e6a99;
+        --color-accent-800: #605c66;
+        --color-accent-900: #524f33;
+
+      
+  }
