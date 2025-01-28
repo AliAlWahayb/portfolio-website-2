@@ -153,7 +153,7 @@ const Hero: React.FC = () => {
         noArrow={true}
         place="right-end"
         content="Drag me!"
-        variant="dark"
+        variant="light"
       />
     </div>
   );

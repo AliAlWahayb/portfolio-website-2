@@ -1,0 +1,12 @@
+<svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      width="48"
+      height="48"
+      className="text-gray-600"
+    >
+      <path
+        d="M12 19l-7-7h14l-7 7z"
+        fill="currentColor"
+      />
+    </svg>
