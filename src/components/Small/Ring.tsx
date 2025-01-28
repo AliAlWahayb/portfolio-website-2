@@ -18,8 +18,13 @@ const radius = 140; // Radius of the circle
 
 const Card = () => {
   return (
-    <div className="relative h-full w-full flex items-center justify-center">
-      <div className="relative">
+    <div className="relative h-full w-full flex items-center justify-center scale-125">
+      {/* Fullscreen Spline Interaction Layer */}
+      <div className="absolute inset-0 z-0 pointer-events-auto  ">
+        <Spline scene="src/assets/emoji.spline" className="" />
+      </div>
+
+      <div className="relative z-10">
         <motion.div
           animate={{
             rotate: 360,
@@ -33,7 +38,6 @@ const Card = () => {
         >
           {/* Render Buttons Dynamically */}
           {buttonData.map((button, index) => {
-            // Calculate position dynamically
             const angle = (2 * Math.PI * index) / buttonData.length;
             const x = Math.cos(angle) * radius;
             const y = Math.sin(angle) * radius;
@@ -71,14 +75,11 @@ const Card = () => {
           {/* Invisible Center Spacer */}
           <div className="opacity-0 profile_item w-[200px] h-[200px] p-1 border-2 rounded-full"></div>
         </motion.div>
+
         {/* Center Button */}
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-          <button className="profile_item w-[200px] h-[200px] p-1 border-2 rounded-full cursor-pointer">
-            <div className="w-full bg-white h-full flex items-center justify-center p-2 rounded-full ">
-              <span className="size-full  bg-transparent inline-block z-50">
-                <Spline scene="src\assets\emoji.spline"  />
-              </span>
-            </div>
+        <div className=" absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+          <button className="ring-[25px] ring-white ring-inset profile_item w-[200px] h-[200px] p-1 border-2 rounded-full cursor-pointer">
+            
           </button>
         </div>
       </div>
