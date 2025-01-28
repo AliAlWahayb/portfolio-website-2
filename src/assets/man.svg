@@ -1,0 +1,56 @@
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 200 200"
+  width="200"
+  height="200"
+>
+  <!-- Background Gradient (Face) -->
+  <defs>
+    <radialGradient id="faceGradient" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#FFEC8B" /> <!-- Light yellow center -->
+      <stop offset="100%" stop-color="#F9C12B" /> <!-- Darker yellow edges -->
+    </radialGradient>
+  </defs>
+  <circle cx="100" cy="100" r="90" fill="url(#faceGradient)" />
+
+  <!-- Shadow (Under the Emoji) -->
+  <ellipse
+    cx="100"
+    cy="175"
+    rx="50"
+    ry="15"
+    fill="rgba(0, 0, 0, 0.2)"
+  />
+
+  <!-- Left Eye -->
+  <circle cx="70" cy="80" r="10" fill="#7D4C24" />
+  <circle cx="70" cy="80" r="5" fill="rgba(255, 255, 255, 0.6)" />
+
+  <!-- Right Eye -->
+  <circle cx="130" cy="80" r="10" fill="#7D4C24" />
+  <circle cx="130" cy="80" r="5" fill="rgba(255, 255, 255, 0.6)" />
+
+  <!-- Blush Left -->
+  <circle cx="60" cy="110" r="5" fill="rgba(255, 150, 150, 0.5)" />
+
+  <!-- Blush Right -->
+  <circle cx="140" cy="110" r="5" fill="rgba(255, 150, 150, 0.5)" />
+
+  <!-- Smile -->
+  <path
+    d="M70,120 Q100,145 130,120"
+    stroke="#703800"
+    stroke-width="4"
+    fill="none"
+    stroke-linecap="round"
+  />
+
+  <!-- Highlight Effect -->
+  <circle
+    cx="80"
+    cy="50"
+    r="20"
+    fill="rgba(255, 255, 255, 0.3)"
+    opacity="0.8"
+  />
+</svg>

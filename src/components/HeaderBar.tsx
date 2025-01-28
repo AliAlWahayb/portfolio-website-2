@@ -1,127 +1,88 @@
-"use client";
-
-import { useState } from "react";
-import { Dialog, DialogPanel } from "@headlessui/react";
-import { HiMiniXMark } from "react-icons/hi2";
-import { FaBars } from "react-icons/fa6";
-import BgLight from "./Small/BgLight";
+import { motion } from "framer-motion";
 import Headroom from "react-headroom";
 
-const navigation = [
-  { name: "About", href: "#" },
-  { name: "Features", href: "#" },
-  { name: "Skills", href: "#" },
-  { name: "Projects", href: "#" },
-  { name: "Contact", href: "#" },
-  { name: "TimeLine", href: "#" },
-];
+const links = ["Products", "History", "Contact"];
 
-export default function Example() {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-
+export default function StackedNavbars() {
   return (
     <Headroom
-      className=""
+      className="relative z-100 "
       style={{
         transition: "transform .5s ease-in-out",
       }}
     >
-      <div className="bg-transparent backdrop-filter backdrop-blur-lg">
-        <header className=" inset-x-0 top-0 z-50 ">
-          <nav
-            aria-label="Global"
-            className="flex items-center justify-between p-6 lg:px-8"
-          >
-            <div className="flex lg:flex-1">
-              <a href="#" className="-m-1.5 p-1.5">
-                <span className="sr-only">Your Company</span>
-                <img
-                  alt=""
-                  src="/src/assets/logo.svg"
-                  className="h-16 w-auto hover:scale-125 transition-transform  duration-900"
-                />
-              </a>
-            </div>
-            <div className="flex lg:hidden">
-              <button
-                type="button"
-                onClick={() => setMobileMenuOpen(true)}
-                className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-secondary-text-base"
+      <div className="mt-3 flex justify-center">
+        <nav className="absolute  w-[90%] md:w-[70%] bg-black/30 backdrop-blur-lg rounded-2xl shadow-lg flex items-center justify-between px-6 py-3">
+          {/* Left Section */}
+          <div className="flex space-x-6">
+            {links.map((link) => (
+              <a
+                href={link}
+                className="text-white font-medium hover:text-gray-300"
               >
-                <span className="sr-only">Open main menu</span>
-                <FaBars aria-hidden="true" className="size-8" />
-              </button>
-            </div>
-            <div className="hidden lg:flex lg:gap-x-12">
-              {navigation.map((item) => (
-                <a
-                  key={item.name}
-                  href={item.href}
-                  className="text-sm/6 font-semibold text-text-base hover:text-text-600 hover:scale-150 transition-transform  duration-300"
-                >
-                  {item.name}
-                </a>
-              ))}
-            </div>
-            <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-              {/* <a href="#" className="text-sm/6 font-semibold text-gray-900">
-              Log in <span aria-hidden="true">&rarr;</span>
-            </a> */}
-            </div>
-          </nav>
-          <Dialog
-            open={mobileMenuOpen}
-            onClose={setMobileMenuOpen}
-            className="lg:hidden"
-          >
-            <div className="fixed inset-0 z-50" />
-            <DialogPanel className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-background-base px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
-              <div className="flex items-center justify-between">
-                <BgLight />
+                {link}
+              </a>
+            ))}
+          </div>
 
-                <a href="#" className="-m-1.5 p-1.5">
-                  <span className="sr-only">Your Company</span>
-                  <img
-                    alt=""
-                    src="/src/assets/logo.svg"
-                    className="h-14 w-auto"
-                  />
-                </a>
-                <button
-                  type="button"
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="-m-2.5 rounded-md p-2.5 text-secondary-text-base"
-                >
-                  <span className="sr-only">Close menu</span>
-                  <HiMiniXMark aria-hidden="true" className="size-8 " />
-                </button>
-              </div>
-              <div className="mt-6 flow-root">
-                <div className="-my-6 divide-y divide-gray-500/10">
-                  <div className="space-y-2 py-6">
-                    {navigation.map((item) => (
-                      <a
-                        key={item.name}
-                        href={item.href}
-                        className="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-text-base hover:text-text-600"
-                      >
-                        {item.name}
-                      </a>
-                    ))}
-                  </div>
-                  <div className="py-6">
-                    {/* <a
-                    href="#"
-                    className="-mx-3 block rounded-lg px-3 py-2.5 text-base/7 font-semibold text-gray-900 hover:bg-gray-50"
-                  >
-                    Log in
-                  </a> */}
-                  </div>
-                </div>
-              </div>
-            </DialogPanel>
-          </Dialog>
-        </header>
+          {/* Center Logo */}
+          <motion.div
+            initial={{ scale: 0.1, opacity: 0 }}
+            animate={{ scale: 1.5, opacity: 1 }}
+            transition={{
+              duration: 3.5,
+              repeat: Infinity,
+              repeatType: "reverse",
+            }}
+            className="text-white text-xl font-bold"
+          >
+            logo.
+          </motion.div>
+
+          {/* Right Section */}
+          <div className="flex space-x-4 items-center">
+            <a href="#" className="text-white font-medium hover:text-gray-300">
+              Sign in
+            </a>
+            <button className="bg-purple-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-purple-700">
+              Try free
+            </button>
+          </div>
+        </nav>
+        {/* second nav */}
+        <nav className=" w-[90%] md:w-[70%] bg-black/20 backdrop-blur-xl rounded-2xl shadow-lg flex items-center justify-between px-6 py-3 border border-white/10">
+          {/* Left Section */}
+          <div className="flex space-x-6">
+            {links.map((link) => (
+              <a
+                href={link}
+                className="text-white font-medium hover:text-gray-300"
+              >
+                {link}
+              </a>
+            ))}
+          </div>
+
+          {/* Center Logo */}
+          <motion.div
+            initial={{ scale: 0.9, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            transition={{ duration: 0.5 }}
+            className="text-white text-xl font-bold"
+          >
+            logo.
+          </motion.div>
+
+          {/* Right Section */}
+          <div className="flex space-x-4 items-center">
+            <a href="#" className="text-white font-medium hover:text-gray-300">
+              Sign in
+            </a>
+            <button className="bg-purple-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-purple-700">
+              Try free
+            </button>
+          </div>
+        </nav>
       </div>
     </Headroom>
   );
