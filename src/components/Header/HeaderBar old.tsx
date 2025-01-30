@@ -4,7 +4,7 @@ import { useState } from "react";
 import { Dialog, DialogPanel } from "@headlessui/react";
 import { HiMiniXMark } from "react-icons/hi2";
 import { FaBars } from "react-icons/fa6";
-import BgLight from "./Small/BgLight";
+import BgLight from "../Misc/BgLight";
 import Headroom from "react-headroom";
 
 const navigation = [

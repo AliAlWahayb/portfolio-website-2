@@ -18,7 +18,7 @@ const radius = 140; // Radius of the circle
 
 const Card = () => {
   return (
-    <div className="relative h-full w-full flex items-center justify-center scale-125">
+    <div className="relative h-full w-full flex items-center justify-center  ">
       {/* Fullscreen Spline Interaction Layer */}
       <div className="absolute inset-0 z-0 pointer-events-auto  ">
         <Spline scene="src/assets/emoji.spline" className="" />
@@ -63,7 +63,6 @@ const Card = () => {
                     repeat: Infinity,
                     ease: "linear",
                   }}
-                  whileHover={{ scale: 1.1 }}
                   className="block w-[40px] h-[40px] transition-transform duration-50 rounded-full z-[2] bg-white p-1"
                 >
                   <img src={button.svg} alt={button.alt} />

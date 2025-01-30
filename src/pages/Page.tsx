@@ -1,14 +1,13 @@
 import React from "react";
-import HeaderBar from "../components/HeaderBar";
-import Hero from "../components/Hero";
-import Skills from "../components/Skills";
-import Projects from "../components/Projects";
+import HeaderBar from "../components/Header/HeaderBar";
+import Hero from "../components/Hero/Hero";
+import Skills from "../components/Skills/Skills";
+import Projects from "../components/Projects/Projects";
 
 const Page: React.FC = () => {
   return (
     <div className="bg-background-base overflow-hidden" id="rootPage">
       <HeaderBar />
-      
 
       <Hero />
       <Skills />

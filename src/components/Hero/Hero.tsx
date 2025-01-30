@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import BgLight from "./Small/BgLight";
+import BgLight from "../Misc/BgLight";
 import SvgIcon from "./Small/SvgIcon";
 import { PiGithubLogoBold } from "react-icons/pi";
 import { TfiLinkedin } from "react-icons/tfi";
