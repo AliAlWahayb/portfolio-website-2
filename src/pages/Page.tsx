@@ -8,7 +8,6 @@ const Page: React.FC = () => {
   return (
     <div className="bg-background-base overflow-hidden" id="rootPage">
       <HeaderBar />
-
       <Hero />
       <Skills />
       <Projects />

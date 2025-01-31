@@ -1,9 +1,17 @@
 import { motion } from "framer-motion";
+import { useState } from "react";
 import Headroom from "react-headroom";
 
 const links = ["Products", "History", "Contact"];
 
 export default function StackedNavbars() {
+  const [isLaunching, setIsLaunching] = useState(false);
+
+  const handleLaunch = () => {
+    setIsLaunching(true);
+    setTimeout(() => setIsLaunching(false), 1500); // Reset after animation
+  };
+
   return (
     <Headroom
       className="relative z-100 "
@@ -65,9 +73,18 @@ export default function StackedNavbars() {
 
           {/* Center Logo */}
           <motion.div
-            initial={{ scale: 0.9, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            transition={{ duration: 0.5 }}
+            initial={{ opacity: 0, scale: 1, x: -100, y: -100 }}
+            animate={
+              isLaunching
+                ? {
+                    opacity: 1,
+                    scale: 1.2,
+                    x: [0, 100, -100, 100, -100, 0],
+                    y: [0, 100, -100, 100, -100, 0],
+                  }
+                : { opacity: 1, scale: 1, x: 0, y: 0 }
+            }
+            transition={{ duration: 2, ease: "easeInOut" }}
             className="text-white text-xl font-bold"
           >
             logo.
@@ -78,7 +95,10 @@ export default function StackedNavbars() {
             <a href="#" className="text-white font-medium hover:text-gray-300">
               Sign in
             </a>
-            <button className="bg-purple-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-purple-700">
+            <button
+              onClick={handleLaunch}
+              className="bg-purple-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-purple-700"
+            >
               Try free
             </button>
           </div>

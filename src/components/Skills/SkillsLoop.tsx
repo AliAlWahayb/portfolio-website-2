@@ -19,25 +19,15 @@ const RectangularMotionCards: React.FC = () => {
     { svg: "src/assets/tailwind.svg", alt: "tailwind" },
     { svg: "src/assets/tailwind.svg", alt: "tailwind" },
     { svg: "src/assets/tailwind.svg", alt: "tailwind" },
-    { svg: "src/assets/tailwind.svg", alt: "tailwind" },
-    { svg: "src/assets/tailwind.svg", alt: "tailwind" },
-    { svg: "src/assets/tailwind.svg", alt: "tailwind" },
-    { svg: "src/assets/tailwind.svg", alt: "tailwind" },
-    { svg: "src/assets/tailwind.svg", alt: "tailwind" },
-    { svg: "src/assets/tailwind.svg", alt: "tailwind" },
-    { svg: "src/assets/tailwind.svg", alt: "tailwind" },
-    { svg: "src/assets/tailwind.svg", alt: "tailwind" },
-    { svg: "src/assets/tailwind.svg", alt: "tailwind" },
-    { svg: "src/assets/tailwind.svg", alt: "tailwind" },
-  ];
+  ].reverse();
 
   const containerRef = useRef<HTMLDivElement | null>(null);
   const [moveX, setMoveX] = useState(1150);
   const moveY = 150;
-  const duration = cards.length * 2;
-  const delay = duration / cards.length;
+  const duration = 50; // Set a fixed duration for smoother timing
   const marginX = 100;
 
+  // Update container dimensions on resize
   useEffect(() => {
     const updateDimensions = () => {
       if (containerRef.current) {
@@ -48,35 +38,65 @@ const RectangularMotionCards: React.FC = () => {
     updateDimensions();
     window.addEventListener("resize", updateDimensions);
     return () => window.removeEventListener("resize", updateDimensions);
-  }, []);
+  }, [cards.length, marginX]); // Added dependencies
 
-  const pathVariants = (index: number) => ({
-    x: [marginX, moveX, moveX, marginX, marginX],
-    y: [0, 0, moveY, moveY, 0],
-    transition: {
-      repeat: Infinity,
-      duration: duration,
-      ease: ["linear", "anticipate", "linear", "anticipate"],
-      delay: index * delay,
-      times: [0, 0.45, 0.5, 0.95, 1],
-    },
-  });
+  // Helper function to calculate the path variants
+  const pathVariants = (index: number) => {
+    const halfLength = cards.length / 2;
+    const isSecondRow = index >= halfLength;
+
+    // Adjust x and y paths to be consistent for synchronization
+    const xAnimation = isSecondRow
+      ? [
+          marginX * (index + 1),
+          marginX,
+          marginX,
+          moveX,
+          moveX,
+          marginX * (index + 1),
+        ]
+      : [
+          marginX * (index + 1),
+          moveX,
+          moveX,
+          marginX,
+          marginX,
+          marginX * (index + 1),
+        ];
+
+    const yAnimation = isSecondRow
+      ? [moveY, moveY, 0, 0, moveY, moveY]
+      : [0, 0, moveY, moveY, 0, 0];
+
+    const delay = isSecondRow
+      ? index 
+      : (cards.length - index); // Reverse delay for the first row
+
+    return {
+      x: xAnimation,
+      y: yAnimation,
+      transition: {
+        repeat: Infinity,
+        duration: duration,
+        ease: ["linear", "easeIn","linear", "easeIn"],
+        delay: delay,
+        times: [0, 0.25, 0.3, 0.7, 0.75, 1],
+      },
+    };
+  };
 
   return (
     <div
       ref={containerRef}
-      className="relative w-full h-full border border-gray-300 p-4"
+      className="relative w-full h-full "
     >
       {cards.map((card, index) => (
         <motion.div
           key={index}
           animate={pathVariants(index)}
-          className="absolute z-10"
+          className="absolute" // Moved inline style to className for clarity
         >
-          <Card
-            svg={card.svg}
-            alt={card.alt}
-          />
+          <Card svg={card.svg} alt={card.alt} />
         </motion.div>
       ))}
     </div>
