@@ -83,6 +83,42 @@ export default function Projects() {
             lgImageUrl="https://images.unsplash.com/photo-1511485977113-f34c92461ad9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
             lgImageAlt="Fast & Secure"
           />
+          <CardCube
+            title="Scalability"
+            description="Scale your apps efficiently..."
+            imageUrl="https://tailwindui.com/plus/img/component-images/bento-03-performance.png"
+            className="lg:col-span-1"
+            lgTitle="large Scalability"
+            lgDescription="large Scale your apps efficiently..."
+            lgImageUrl={[
+              "https://tailwindui.com/plus/img/component-images/bento-03-performance.png",
+              "https://tailwindui.com/plus/img/component-images/bento-03-performance.png",
+              "https://tailwindui.com/plus/img/component-images/bento-03-performance.png",
+              "https://tailwindui.com/plus/img/component-images/bento-03-performance.png",
+              "https://tailwindui.com/plus/img/component-images/bento-03-performance.png",
+              "https://tailwindui.com/plus/img/component-images/bento-03-performance.png",
+              "https://tailwindui.com/plus/img/component-images/bento-03-performance.png",
+            ]}
+            lgImageAlt={["First Image", "Second Image", "Third Image"]}
+          />
+          <CardCube
+            title="Scalability"
+            description="Scale your apps efficiently..."
+            imageUrl="https://tailwindui.com/plus/img/component-images/bento-03-performance.png"
+            className="lg:col-span-1"
+            lgTitle="large Scalability"
+            lgDescription="large Scale your apps efficiently..."
+            lgImageUrl={[
+              "https://tailwindui.com/plus/img/component-images/bento-03-performance.png",
+              "https://tailwindui.com/plus/img/component-images/bento-03-performance.png",
+              "https://tailwindui.com/plus/img/component-images/bento-03-performance.png",
+              "https://tailwindui.com/plus/img/component-images/bento-03-performance.png",
+              "https://tailwindui.com/plus/img/component-images/bento-03-performance.png",
+              "https://tailwindui.com/plus/img/component-images/bento-03-performance.png",
+              "https://tailwindui.com/plus/img/component-images/bento-03-performance.png",
+            ]}
+            lgImageAlt={["First Image", "Second Image", "Third Image"]}
+          />
           <CardCol
             title="All-in-One Solution"
             description="Integrate seamlessly..."

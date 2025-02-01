@@ -1,6 +1,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { motion } from "framer-motion";
 import { useState } from "react";
+import CoolBtn from "./CoolBtn";
+import { IoCloseSharp } from "react-icons/io5";
 
 function CardCube(props: any) {
   const [isExpanded, setIsExpanded] = useState(false);
@@ -8,10 +10,9 @@ function CardCube(props: any) {
   return (
     <motion.div
       layout
-      onClick={() => setIsExpanded(!isExpanded)}
       className={` ${props.css} ${
         isExpanded
-          ? "absolute top-0 left-0 inset-0 w-full h-full z-100"
+          ? "absolute top-0 left-0 inset-0 w-full h-screen z-100"
           : "relative"
       }`}
     >
@@ -19,7 +20,7 @@ function CardCube(props: any) {
         <>
           <div className="absolute inset-px bg-card-base"></div>
           <div className="relative flex h-full flex-col overflow-hidden">
-            <div className="px-8 pt-8 sm:px-10 sm:pt-10">
+            <div className="px-8 pt-5 sm:px-10 sm:pt-5">
               <p className="mt-2 text-lg font-medium tracking-tight text-gray-900">
                 {props.title}
               </p>
@@ -27,20 +28,28 @@ function CardCube(props: any) {
                 {props.description}
               </p>
             </div>
-            <div className="flex flex-1 items-center justify-center px-8 max-lg:py-6 sm:px-10 lg:pb-2">
+            <div className=" flex flex-1 items-center justify-center px-8 max-lg:py-6 sm:px-10 lg:pb-2">
               <img
                 className="w-full object-cover"
                 src={props.imageUrl}
                 alt={props.imageAlt}
               />
-            </div>
+            </div >
+            <button onClick={() => setIsExpanded(true)}  className=" w-fit self-center my-4 "><CoolBtn text="Learn More" /></button>
           </div>
           <div className="pointer-events-none absolute inset-px ring-1 shadow-sm ring-black/5"></div>
         </>
       )}
       {isExpanded && (
         <>
-          <div className="absolute inset-px bg-card-base"></div>
+          <div>
+            <div className="absolute inset-px bg-card-base "></div>
+          <button
+                className="absolute top-4 right-4 p-2 bg-background-base rounded-full shadow-md z-101 cursor-pointer hover:bg-gray-200 transition"
+                onClick={() => setIsExpanded(false)}
+              >
+                <IoCloseSharp  size={24} />
+              </button>
           <div className="relative flex h-full flex-col overflow-hidden">
             <div className="px-8 pt-8 sm:px-10 sm:pt-10">
               <p className="mt-2 text-3xl font-medium tracking-tight text-gray-900">
@@ -76,6 +85,7 @@ function CardCube(props: any) {
             </div>
           </div>
           <div className="pointer-events-none absolute inset-px ring-1 shadow-sm ring-black/5"></div>
+          </div>
         </>
       )}
     </motion.div>

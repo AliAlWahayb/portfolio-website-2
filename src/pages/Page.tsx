@@ -8,9 +8,15 @@ const Page: React.FC = () => {
   return (
     <div className="bg-background-base overflow-hidden" id="rootPage">
       <HeaderBar />
-      <Hero />
-      <Skills />
-      <Projects />
+      <div className="min-h-screen">
+        <Hero />
+      </div>
+      <div className="min-h-screen">
+        <Skills />
+      </div>
+      <div className="min-h-screen">
+        <Projects />
+      </div>
     </div>
   );
 };

@@ -1,6 +1,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useState } from "react";
 import { motion } from "framer-motion";
+import CoolBtn from "./CoolBtn";
+import { IoCloseSharp } from "react-icons/io5";
 
 function CardCol(props: any) {
   const [isExpanded, setIsExpanded] = useState(false);
@@ -11,7 +13,7 @@ function CardCol(props: any) {
       onClick={() => setIsExpanded(!isExpanded)}
       className={` ${props.css} ${
         isExpanded
-          ? "absolute top-0 left-0 inset-0 w-full h-full z-100"
+          ? "absolute top-0 left-0 inset-0 w-full h-screen z-100"
           : "relative lg:col-span-2"
       }`}
     >
@@ -19,7 +21,7 @@ function CardCol(props: any) {
         <>
           <div className={`absolute inset-px bg-card-base ${props.css}`}></div>
           <div className="relative flex h-full flex-col overflow-hidden rounded-[calc(var(--radius-lg)+1px)] lg:rounded-t-[calc(2rem+1px)]">
-            <div className="px-8 pt-8 sm:px-10 sm:pt-10">
+            <div className="px-8 pt-5 sm:px-10 sm:pt-5">
               <p className="mt-2 text-lg font-medium tracking-tight text-gray-900 max-lg:text-center">
                 {props.title}
               </p>
@@ -34,6 +36,12 @@ function CardCol(props: any) {
                 alt={props.imageAlt}
               />
             </div>
+            <button
+              onClick={() => setIsExpanded(true)}
+              className=" w-fit self-center my-4 "
+            >
+              <CoolBtn text="Learn More" />
+            </button>
           </div>
           <div
             className={`pointer-events-none absolute inset-px ring-1 shadow-sm ring-black/5 ${props.css}`}
@@ -44,6 +52,12 @@ function CardCol(props: any) {
       {isExpanded && (
         <>
           <div className={`absolute inset-px bg-card-base ${props.css}`}></div>
+          <button
+            className="absolute top-4 right-4 p-2 bg-background-base rounded-full shadow-md z-101 cursor-pointer hover:bg-gray-200 transition"
+            onClick={() => setIsExpanded(false)}
+          >
+            <IoCloseSharp size={24} />
+          </button>
           <div className="relative flex h-full flex-col overflow-hidden rounded-[calc(var(--radius-lg)+1px)] lg:rounded-t-[calc(2rem+1px)]">
             <div className="px-8 pt-8 sm:px-10 sm:pt-10">
               <p className="mt-2 text-3xl font-medium tracking-tight text-gray-900 max-lg:text-center">
