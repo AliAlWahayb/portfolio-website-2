@@ -3,6 +3,7 @@ import HeaderBar from "../components/Header/HeaderBar";
 import Hero from "../components/Hero/Hero";
 import Skills from "../components/Skills/Skills";
 import Projects from "../components/Projects/Projects";
+import TimeLine from "../components/TimeLine";
 
 const Page: React.FC = () => {
   return (
@@ -16,6 +17,9 @@ const Page: React.FC = () => {
       </div>
       <div className="min-h-screen">
         <Projects />
+      </div>
+      <div className="min-h-screen">
+        <TimeLine />
       </div>
     </div>
   );

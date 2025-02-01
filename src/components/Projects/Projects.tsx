@@ -14,12 +14,13 @@ export default function Projects() {
         </p>
 
         {/* Grid Container */}
-        <div className="mt-10 grid gap-4 sm:mt-16 lg:grid-cols-3 lg:grid-rows-3 relative">
+        <div className="mt-10 grid gap-4 sm:mt-16 lg:grid-cols-3 lg:grid-rows-3 relative ">
           <CardRow
             title="Deploy in minutes"
             description="Lorem ipsum..."
             imageUrl="https://tailwindui.com/plus/img/component-images/bento-03-mobile-friendly.png"
             className="lg:row-span-2"
+            css="rounded-tl-4xl"
             lgTitle="large Fast & Secure"
             lgDescription="large Optimize your deployments..."
             lgImageUrl="https://images.unsplash.com/photo-1511485977113-f34c92461ad9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
@@ -50,6 +51,7 @@ export default function Projects() {
             imageUrl="https://tailwindui.com/plus/img/component-images/bento-03-performance.png"
             imageAlt="Fast & Secure"
             className="lg:col-span-1"
+            css="rounded-tr-4xl"
             lgTitle="large Fast & Secure"
             lgDescription="large Optimize your deployments..."
             lgImageUrl="https://images.unsplash.com/photo-1511485977113-f34c92461ad9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
@@ -106,6 +108,7 @@ export default function Projects() {
             description="Lorem ipsum..."
             imageUrl="https://tailwindui.com/plus/img/component-images/bento-03-mobile-friendly.png"
             className="lg:row-span-2"
+            css="rounded-bl-4xl"
             lgTitle="large Scalability"
             lgDescription="large Scale your apps efficiently..."
             lgImageUrl={[
@@ -136,6 +139,29 @@ export default function Projects() {
               "https://tailwindui.com/plus/img/component-images/bento-03-performance.png",
             ]}
             lgImageAlt={["First Image", "Second Image", "Third Image"]}
+          />
+          <CardCube
+            title="Fast & Secure"
+            description="Optimize your deployments..."
+            imageUrl="https://tailwindui.com/plus/img/component-images/bento-03-performance.png"
+            imageAlt="Fast & Secure"
+            className="lg:col-span-1"
+            lgTitle="large Fast & Secure"
+            lgDescription="large Optimize your deployments..."
+            lgImageUrl="https://images.unsplash.com/photo-1511485977113-f34c92461ad9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
+            lgImageAlt="Fast & Secure"
+          />
+          <CardCube
+            title="Fast & Secure"
+            description="Optimize your deployments..."
+            imageUrl="https://tailwindui.com/plus/img/component-images/bento-03-performance.png"
+            imageAlt="Fast & Secure"
+            className="lg:col-span-1"
+            css="rounded-br-4xl"
+            lgTitle="large Fast & Secure"
+            lgDescription="large Optimize your deployments..."
+            lgImageUrl="https://images.unsplash.com/photo-1511485977113-f34c92461ad9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
+            lgImageAlt="Fast & Secure"
           />
         </div>
       </div>

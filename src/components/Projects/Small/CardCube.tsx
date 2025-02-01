@@ -8,17 +8,20 @@ function CardCube(props: any) {
   const [isExpanded, setIsExpanded] = useState(false);
 
   return (
-    <div className="relative"> {/* Added parent wrapper */}
+    <div className="relative">
+      {/* Added parent wrapper */}
       <motion.div
         layout
         transition={{ duration: 0.3 }}
-        className={` ${props.css} ${
+        className={`  ${
           isExpanded
             ? "fixed inset-0 w-full h-screen z-50 scale-90"
             : "relative h-full"
         }`}
       >
-        <div className="absolute inset-px bg-card-base"></div>
+        <div
+          className={`absolute inset-px bg-card-base rounded-xl ${props.css} `}
+        ></div>
 
         {!isExpanded ? (
           <div className="relative flex h-full flex-col overflow-hidden">

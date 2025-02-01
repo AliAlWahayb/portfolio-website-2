@@ -8,16 +8,20 @@ function CardRow(props: any) {
   const [isExpanded, setIsExpanded] = useState(false);
 
   return (
-    <div className="relative lg:row-span-2"> {/* Added a wrapper to maintain layout space */}
+    <div className="relative lg:row-span-2">
+      {/* Added a wrapper to maintain layout space */}
       <motion.div
         layout
-        className={` ${props.css} transition-all duration-300 ${
+        transition={{ duration: 0.3 }}
+        className={` ${
           isExpanded
             ? "fixed inset-0 w-full h-screen z-50 scale-90"
             : "relative lg:row-span-2 h-full"
         }`}
       >
-        <div className="absolute inset-px bg-card-base"></div>
+        <div
+          className={`absolute inset-px bg-card-base rounded-xl ${props.css} `}
+        ></div>
 
         {!isExpanded ? (
           <div className="relative flex h-full flex-col overflow-hidden rounded-[calc(var(--radius-lg)+1px)] lg:rounded-l-[calc(2rem+1px)]">

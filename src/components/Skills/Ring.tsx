@@ -47,7 +47,7 @@ const Card = () => {
                 <motion.span
                   animate={{ rotate: -360 }}
                   transition={{ duration: 50, repeat: Infinity, ease: "linear" }}
-                  className="block size-18 transition-transform duration-50 rounded-full z-2 bg-white p-1"
+                  className="block size-18 transition-transform duration-50 rounded-full z-2 bg-card-base p-1"
                 >
                   <img src={button.svg} alt={button.alt} className="w-full h-full object-contain select-none"  />
                 </motion.span>

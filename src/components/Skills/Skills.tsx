@@ -13,7 +13,7 @@ const Skills: React.FC = () => {
           className="absolute inset-0 z-0 pointer-events-auto flex items-center justify-center "
         />
       </div>
-      <div className="-mt-45">
+      <div className="">
         <SkillsLoop />
       </div>
     </div>

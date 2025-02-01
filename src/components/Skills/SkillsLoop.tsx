@@ -1,8 +1,8 @@
-import React, { useEffect, useState, useRef } from "react";
 import { motion } from "framer-motion";
 import Card from "./Small/Card";
+import { Tooltip } from "react-tooltip";
 
-const RectangularMotionCards: React.FC = () => {
+const StaggeredRowCards: React.FC = () => {
   const cards = [
     { svg: "src/assets/arrow.svg", alt: "arrow" },
     { svg: "src/assets/tailwind.svg", alt: "tailwind" },
@@ -18,89 +18,72 @@ const RectangularMotionCards: React.FC = () => {
     { svg: "src/assets/tailwind.svg", alt: "tailwind" },
     { svg: "src/assets/tailwind.svg", alt: "tailwind" },
     { svg: "src/assets/tailwind.svg", alt: "tailwind" },
+    { svg: "src/assets/arrow.svg", alt: "arrow" },
     { svg: "src/assets/tailwind.svg", alt: "tailwind" },
-  ].reverse();
-
-  const containerRef = useRef<HTMLDivElement | null>(null);
-  const [moveX, setMoveX] = useState(1150);
-  const moveY = 150;
-  const duration = 50; // Set a fixed duration for smoother timing
-  const marginX = 100;
-
-  // Update container dimensions on resize
-  useEffect(() => {
-    const updateDimensions = () => {
-      if (containerRef.current) {
-        setMoveX(containerRef.current.clientWidth - marginX * 2);
-      }
-    };
-
-    updateDimensions();
-    window.addEventListener("resize", updateDimensions);
-    return () => window.removeEventListener("resize", updateDimensions);
-  }, [cards.length, marginX]); // Added dependencies
-
-  // Helper function to calculate the path variants
-  const pathVariants = (index: number) => {
-    const halfLength = cards.length / 2;
-    const isSecondRow = index >= halfLength;
-
-    // Adjust x and y paths to be consistent for synchronization
-    const xAnimation = isSecondRow
-      ? [
-          marginX * (index + 1),
-          marginX,
-          marginX,
-          moveX,
-          moveX,
-          marginX * (index + 1),
-        ]
-      : [
-          marginX * (index + 1),
-          moveX,
-          moveX,
-          marginX,
-          marginX,
-          marginX * (index + 1),
-        ];
-
-    const yAnimation = isSecondRow
-      ? [moveY, moveY, 0, 0, moveY, moveY]
-      : [0, 0, moveY, moveY, 0, 0];
-
-    const delay = isSecondRow
-      ? index 
-      : (cards.length - index); // Reverse delay for the first row
-
-    return {
-      x: xAnimation,
-      y: yAnimation,
-      transition: {
-        repeat: Infinity,
-        duration: duration,
-        ease: ["linear", "easeIn","linear", "easeIn"],
-        delay: delay,
-        times: [0, 0.25, 0.3, 0.7, 0.75, 1],
-      },
-    };
-  };
+    { svg: "src/assets/tailwind.svg", alt: "tailwind" },
+    { svg: "src/assets/tailwind.svg", alt: "tailwind" },
+    { svg: "src/assets/tailwind.svg", alt: "tailwind" },
+    { svg: "src/assets/tailwind.svg", alt: "tailwind" },
+    { svg: "src/assets/tailwind.svg", alt: "tailwind" },
+    { svg: "src/assets/tailwind.svg", alt: "tailwind" },
+    { svg: "src/assets/tailwind.svg", alt: "tailwind" },
+    { svg: "src/assets/tailwind.svg", alt: "tailwind" },
+    { svg: "src/assets/tailwind.svg", alt: "tailwind" },
+    { svg: "src/assets/tailwind.svg", alt: "tailwind" },
+    { svg: "src/assets/tailwind.svg", alt: "tailwind" },
+    { svg: "src/assets/tailwind.svg", alt: "tailwind" },
+  ];
+  function getRandomNumber(min: number, max: number): number {
+    return Math.random() * (max - min) + min;
+  }
 
   return (
-    <div
-      ref={containerRef}
-      className="relative w-full h-full "
+    <motion.div
+      initial="initial"
+      whileInView="whileInView"
+      transition={{ staggerChildren: 0.1 }}
+      viewport={{ once: true }}
+      className="flex flex-wrap justify-center gap-4 w-3/4 mx-auto"
     >
       {cards.map((card, index) => (
         <motion.div
+          variants={{
+            initial: {
+              y: index > cards.length / 2 ? 100 : -100,
+              opacity: 0,
+              scale: 0.8,
+            },
+            whileInView: {
+              y: 0,
+              opacity: 1,
+              scale: 1,
+              transition: { when: "beforeChildren" },
+            },
+          }}
           key={index}
-          animate={pathVariants(index)}
-          className="absolute" // Moved inline style to className for clarity
+          className="w-20 h-20"
+          data-tooltip-id="SkillLoopTooltip"
+          data-tooltip-content={card.alt}
         >
-          <Card svg={card.svg} alt={card.alt} />
+          <motion.div
+            initial={{ translateY: -10 }}
+            animate={{ translateY: [10, -10, 10] }}
+            transition={{
+              repeat: Infinity,
+              ease: "linear",
+              repeatType: "reverse",
+              duration: getRandomNumber(7, 10),
+              when: "afterChildren",
+              delay: 3,
+            }}
+          >
+            <Card svg={card.svg} alt={card.alt} />
+          </motion.div>
         </motion.div>
       ))}
-    </div>
+      <Tooltip id="SkillLoopTooltip" offset={3} variant="light" />
+    </motion.div>
   );
 };
 
-export default RectangularMotionCards;
+export default StaggeredRowCards;
