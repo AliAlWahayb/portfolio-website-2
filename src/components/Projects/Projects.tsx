@@ -113,9 +113,6 @@ export default function Projects() {
               "https://tailwindui.com/plus/img/component-images/bento-03-performance.png",
               "https://tailwindui.com/plus/img/component-images/bento-03-performance.png",
               "https://tailwindui.com/plus/img/component-images/bento-03-performance.png",
-              "https://tailwindui.com/plus/img/component-images/bento-03-performance.png",
-              "https://tailwindui.com/plus/img/component-images/bento-03-performance.png",
-              "https://tailwindui.com/plus/img/component-images/bento-03-performance.png",
             ]}
             lgImageAlt={["First Image", "Second Image", "Third Image"]}
           />

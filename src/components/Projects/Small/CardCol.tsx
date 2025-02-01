@@ -13,8 +13,8 @@ function CardCol(props: any) {
       onClick={() => setIsExpanded(!isExpanded)}
       className={` ${props.css} ${
         isExpanded
-          ? "absolute top-0 left-0 inset-0 w-full h-screen z-100"
-          : "relative lg:col-span-2"
+        ? " fixed inset-0 w-full h-screen z-100 scale-80"
+        : "relative lg:col-span-2"
       }`}
     >
       {!isExpanded && (

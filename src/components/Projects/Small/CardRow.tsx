@@ -12,8 +12,8 @@ function CardRow(props: any) {
       layout
       className={` ${props.css} ${
         isExpanded
-          ? "absolute top-0 left-0 inset-0 w-full h-screen z-100"
-          : "relative lg:row-span-2"
+        ? " fixed inset-0 w-full h-screen z-100 scale-80"
+        : "relative lg:row-span-2"
       }`}
     >
       {!isExpanded && (

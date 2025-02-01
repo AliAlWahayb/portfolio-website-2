@@ -12,7 +12,7 @@ function CardCube(props: any) {
       layout
       className={` ${props.css} ${
         isExpanded
-          ? "absolute top-0 left-0 inset-0 w-full h-screen z-100"
+          ? " fixed inset-0 w-full h-screen z-100 scale-80"
           : "relative"
       }`}
     >
@@ -42,8 +42,7 @@ function CardCube(props: any) {
       )}
       {isExpanded && (
         <>
-          <div>
-            <div className="absolute inset-px bg-card-base "></div>
+          <div className="absolute inset-px bg-card-base "></div>
           <button
                 className="absolute top-4 right-4 p-2 bg-background-base rounded-full shadow-md z-101 cursor-pointer hover:bg-gray-200 transition"
                 onClick={() => setIsExpanded(false)}
@@ -85,7 +84,6 @@ function CardCube(props: any) {
             </div>
           </div>
           <div className="pointer-events-none absolute inset-px ring-1 shadow-sm ring-black/5"></div>
-          </div>
         </>
       )}
     </motion.div>
