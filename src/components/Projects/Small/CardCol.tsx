@@ -1,21 +1,89 @@
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-function CardCol(props: any) {
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { useState } from "react";
+import { motion } from "framer-motion";
 
+function CardCol(props: any) {
+  const [isExpanded, setIsExpanded] = useState(false);
 
   return (
-    <div className={`relative lg:col-span-2 ${props.css}`}>
-      <div className={`absolute inset-px bg-card-base ${props.css}`}></div>
-      <div className="relative flex h-full flex-col overflow-hidden rounded-[calc(var(--radius-lg)+1px)] lg:rounded-t-[calc(2rem+1px)]">
-        <div className="px-8 pt-8 sm:px-10 sm:pt-10">
-          <p className="mt-2 text-lg font-medium tracking-tight text-gray-900 max-lg:text-center">{props.title}</p>
-          <p className="mt-2 max-w-lg text-sm/6 text-gray-500 max-lg:text-center">{props.description}</p>
-        </div>
-        <div className="flex flex-1 items-center justify-center px-8 max-lg:py-6 sm:px-10 lg:pb-2">
-          <img className="w-full max-lg:max-w-xs" src={props.imageUrl} alt={props.imageAlt} />
-        </div>
-      </div>
-      <div className={`pointer-events-none absolute inset-px ring-1 shadow-sm ring-black/5 ${props.css}`}></div>
-    </div>
+    <motion.div
+      layout
+      onClick={() => setIsExpanded(!isExpanded)}
+      className={` ${props.css} ${
+        isExpanded
+          ? "absolute top-0 left-0 inset-0 w-full h-full z-100"
+          : "relative lg:col-span-2"
+      }`}
+    >
+      {!isExpanded && (
+        <>
+          <div className={`absolute inset-px bg-card-base ${props.css}`}></div>
+          <div className="relative flex h-full flex-col overflow-hidden rounded-[calc(var(--radius-lg)+1px)] lg:rounded-t-[calc(2rem+1px)]">
+            <div className="px-8 pt-8 sm:px-10 sm:pt-10">
+              <p className="mt-2 text-lg font-medium tracking-tight text-gray-900 max-lg:text-center">
+                {props.title}
+              </p>
+              <p className="mt-2 max-w-lg text-sm/6 text-gray-500 max-lg:text-center">
+                {props.description}
+              </p>
+            </div>
+            <div className="flex flex-1 items-center justify-center px-8 max-lg:py-6 sm:px-10 lg:pb-2">
+              <img
+                className="w-full max-lg:max-w-xs"
+                src={props.imageUrl}
+                alt={props.imageAlt}
+              />
+            </div>
+          </div>
+          <div
+            className={`pointer-events-none absolute inset-px ring-1 shadow-sm ring-black/5 ${props.css}`}
+          ></div>
+        </>
+      )}
+
+      {isExpanded && (
+        <>
+          <div className={`absolute inset-px bg-card-base ${props.css}`}></div>
+          <div className="relative flex h-full flex-col overflow-hidden rounded-[calc(var(--radius-lg)+1px)] lg:rounded-t-[calc(2rem+1px)]">
+            <div className="px-8 pt-8 sm:px-10 sm:pt-10">
+              <p className="mt-2 text-3xl font-medium tracking-tight text-gray-900 max-lg:text-center">
+                {props.lgTitle}
+              </p>
+              <p className="mt-2 max-w-xl text-sm/6 text-gray-500 max-lg:text-center">
+                {props.lgDescription}
+              </p>
+            </div>
+            <div className="flex flex-1 items-center justify-center px-8 max-lg:py-6 sm:px-10 lg:pb-2">
+              {Array.isArray(props.lgImageUrl) ? (
+                // Multiple Images: Grid Layout
+                <div className="grid grid-cols-2 gap-4 p-10">
+                  {props.lgImageUrl.map(
+                    (image: string | undefined, index: any) => (
+                      <img
+                        key={index}
+                        className="w-full object-cover rounded-lg"
+                        src={image}
+                        alt={props.lgImageAlt?.[index] || "Image"}
+                      />
+                    )
+                  )}
+                </div>
+              ) : (
+                // Single Image: Display Normally
+                <img
+                  className="w-full object-cover p-10"
+                  src={props.lgImageUrl}
+                  alt={props.lgImageAlt}
+                />
+              )}
+            </div>
+          </div>
+          <div
+            className={`pointer-events-none absolute inset-px ring-1 shadow-sm ring-black/5 ${props.css}`}
+          ></div>
+        </>
+      )}
+    </motion.div>
   );
 }
 
