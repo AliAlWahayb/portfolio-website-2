@@ -101,14 +101,17 @@ export default function Projects() {
             ]}
             lgImageAlt={["First Image", "Second Image", "Third Image"]}
           />
-          <CardCube
-            title="Scalability"
-            description="Scale your apps efficiently..."
-            imageUrl="https://tailwindui.com/plus/img/component-images/bento-03-performance.png"
-            className="lg:col-span-1"
+          <CardRow
+            title="Deploy in minutes"
+            description="Lorem ipsum..."
+            imageUrl="https://tailwindui.com/plus/img/component-images/bento-03-mobile-friendly.png"
+            className="lg:row-span-2"
             lgTitle="large Scalability"
             lgDescription="large Scale your apps efficiently..."
             lgImageUrl={[
+              "https://tailwindui.com/plus/img/component-images/bento-03-performance.png",
+              "https://tailwindui.com/plus/img/component-images/bento-03-performance.png",
+              "https://tailwindui.com/plus/img/component-images/bento-03-performance.png",
               "https://tailwindui.com/plus/img/component-images/bento-03-performance.png",
               "https://tailwindui.com/plus/img/component-images/bento-03-performance.png",
               "https://tailwindui.com/plus/img/component-images/bento-03-performance.png",
