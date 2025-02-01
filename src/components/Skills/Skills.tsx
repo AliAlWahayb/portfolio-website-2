@@ -5,7 +5,7 @@ import Spline from "@splinetool/react-spline";
 
 const Skills: React.FC = () => {
   return (
-    <div className="flex flex-col h-full w-full pb-50">
+    <div className="flex flex-col h-full w-full pb-70">
       <div className="relative flex items-center justify-center h-full w-full overflow-hidden z-2">
         <Ring />
         <Spline

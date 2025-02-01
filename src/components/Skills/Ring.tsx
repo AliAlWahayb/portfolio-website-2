@@ -49,14 +49,14 @@ const Card = () => {
                   transition={{ duration: 50, repeat: Infinity, ease: "linear" }}
                   className="block size-18 transition-transform duration-50 rounded-full z-2 bg-white p-1"
                 >
-                  <img src={button.svg} alt={button.alt} className="w-full h-full object-contain" />
+                  <img src={button.svg} alt={button.alt} className="w-full h-full object-contain select-none"  />
                 </motion.span>
               </button>
             );
           })}
 
           {/* Invisible Center Spacer */}
-          <div className="absolute size-24bg-transparent"></div>
+          <div className="absolute size-24 bg-transparent"></div>
         </motion.div>
       </div>
       <Tooltip id="SkillTooltip" offset={3} variant="light" />
