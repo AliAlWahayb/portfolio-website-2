@@ -44,7 +44,7 @@ const Hero: React.FC = () => {
                 }`}
               >
                 <ReactTyped
-                  strings={["Here you can find anything"]}
+                  strings={["Ali AlWahayb"]}
                   startDelay={500}
                   typeSpeed={40}
                   showCursor={false}
@@ -75,47 +75,28 @@ const Hero: React.FC = () => {
                   >
                     <ReactTyped
                       strings={[
-                        "Anim aute id magna aliqua ad ad non deserunt sunt. ",
+                        "Ali, a Computer Science student at Imam Abdulrahman Bin Faisal University, Interested in ",
                       ]}
                       typeSpeed={40}
                       showCursor={false}
                       className="mt-8 text-lg font-medium text-pretty text-secondary-text-base sm:text-xl/8 me-1"
                       onComplete={() => setShowThirdTyped(true)}
                     />
-                  </div>
-                </Draggable>
-              )}
-
-              {showThirdTyped && (
-                <Draggable
-                  bounds="#DragArea"
-                  position={position}
-                  onStart={() => setIsDragging(true)}
-                  onStop={(_e, _data) => {
-                    setIsDragging(false);
-                    setPosition({ x: 0, y: 0 });
-                  }}
-                >
-                  <div
-                    data-tooltip-id="DragTooltip"
-                    data-tooltip-hidden={isDragging}
-                    className={` ${
-                      isDragging
-                        ? "transition-transform  duration-200 ease-out"
-                        : "transition-transform duration-5000 ease-in-out"
-                    }`}
-                  >
-                    <ReactTyped
-                      strings={[
-                        " Qui irure qui lorem cupidatat commodo.",
-                        " Dolor sit amet consectetur adipiscing elit.",
-                        " Tempor incididunt ut labore et dolore magna aliqua.",
-                      ]}
-                      typeSpeed={40}
-                      backSpeed={40}
-                      loop
-                      className="mt-8 text-lg font-medium text-pretty text-secondary-text-base sm:text-xl/8"
-                    />
+                    {showThirdTyped && (
+                      <ReactTyped
+                        strings={[
+                          " Web development.",
+                          " Self-hosting ",
+                          " Text to Speech ",
+                          " Apps development ",
+                          " Machine learning ",
+                        ]}
+                        typeSpeed={40}
+                        backSpeed={40}
+                        loop
+                        className="mt-8 text-lg font-medium text-pretty text-secondary-text-base sm:text-xl/8"
+                      />
+                    )}
                   </div>
                 </Draggable>
               )}
@@ -149,7 +130,11 @@ const Hero: React.FC = () => {
             transition={{ delay: 1, duration: 0.5 }}
             className=" flex items-center justify-center mx-auto  max-w-2xl sm:mt-16"
           >
-            <a href="assets/Ali AlWahayb.pdf" target="_blank" className="my-7 md:-my-5">
+            <a
+              href="src/assets/Ali AlWahayb.pdf"
+              target="_blank"
+              className="my-7 md:-my-5"
+            >
               <CoolBtn text="Open CV" />
             </a>
           </motion.div>

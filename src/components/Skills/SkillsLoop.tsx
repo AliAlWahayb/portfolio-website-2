@@ -1,38 +1,40 @@
 import { motion } from "framer-motion";
 import Card from "./Small/Card";
 import { Tooltip } from "react-tooltip";
+import { useMemo } from "react";
+
+
+
 
 const StaggeredRowCards: React.FC = () => {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const shuffleArray = (array: any[]) => {
+    return array
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      .map((item: any) => ({ item, sort: Math.random() }))
+      .sort((a: { sort: number; }, b: { sort: number; }) => a.sort - b.sort)
+      .map(({ item }) => item);
+  };
+
   const cards = [
-    { svg: "src/assets/arrow.svg", alt: "arrow" },
-    { svg: "src/assets/tailwind.svg", alt: "tailwind" },
-    { svg: "src/assets/tailwind.svg", alt: "tailwind" },
-    { svg: "src/assets/tailwind.svg", alt: "tailwind" },
-    { svg: "src/assets/tailwind.svg", alt: "tailwind" },
-    { svg: "src/assets/tailwind.svg", alt: "tailwind" },
-    { svg: "src/assets/tailwind.svg", alt: "tailwind" },
-    { svg: "src/assets/tailwind.svg", alt: "tailwind" },
-    { svg: "src/assets/tailwind.svg", alt: "tailwind" },
-    { svg: "src/assets/tailwind.svg", alt: "tailwind" },
-    { svg: "src/assets/tailwind.svg", alt: "tailwind" },
-    { svg: "src/assets/tailwind.svg", alt: "tailwind" },
-    { svg: "src/assets/tailwind.svg", alt: "tailwind" },
-    { svg: "src/assets/tailwind.svg", alt: "tailwind" },
-    { svg: "src/assets/arrow.svg", alt: "arrow" },
-    { svg: "src/assets/tailwind.svg", alt: "tailwind" },
-    { svg: "src/assets/tailwind.svg", alt: "tailwind" },
-    { svg: "src/assets/tailwind.svg", alt: "tailwind" },
-    { svg: "src/assets/tailwind.svg", alt: "tailwind" },
-    { svg: "src/assets/tailwind.svg", alt: "tailwind" },
-    { svg: "src/assets/tailwind.svg", alt: "tailwind" },
-    { svg: "src/assets/tailwind.svg", alt: "tailwind" },
-    { svg: "src/assets/tailwind.svg", alt: "tailwind" },
-    { svg: "src/assets/tailwind.svg", alt: "tailwind" },
-    { svg: "src/assets/tailwind.svg", alt: "tailwind" },
-    { svg: "src/assets/tailwind.svg", alt: "tailwind" },
-    { svg: "src/assets/tailwind.svg", alt: "tailwind" },
-    { svg: "src/assets/tailwind.svg", alt: "tailwind" },
+    { name: "C++", svg: "src/assets/logos/c.svg" },
+    { name: "Vue.js", svg: "src/assets/logos/vue-9.svg" },
+    { name: "Java", svg: "src/assets/logos/java.svg" },
+    { name: "GitHub", svg: "src/assets/logos/github-icon-1.svg" },
+    { name: "Prolog", svg: "src/assets/logos/prolog-svgrepo-com.svg" },
+    { name: "PyQt", svg: "src/assets/logos/qt-1.svg" },
+    { name: "SQL", svg: "src/assets/logos/mysql-logo-pure.svg" },
+    { name: "Figma", svg: "src/assets/logos/figma-icon.svg" },
+    { name: "Git", svg: "src/assets/logos/git-bash.svg" },
+    { name: "Bootstrap", svg: "src/assets/logos/bootstrap-5-1.svg" },
+    { name: "Framer-Motion", svg: "src/assets/logos/framer-motion.svg" },
+    { name: "Tailwind", svg: "src/assets/logos/tailwind-css-1.svg" },
+    { name: "javascript", svg: "src/assets/logos/logo-javascript.svg" },
   ];
+
+  const shuffledCards = useMemo(() => shuffleArray(cards), []);
+
+
   function getRandomNumber(min: number, max: number): number {
     return Math.random() * (max - min) + min;
   }
@@ -45,7 +47,7 @@ const StaggeredRowCards: React.FC = () => {
       viewport={{ once: true }}
       className="flex flex-wrap justify-center items-center gap-1 md:gap-4 w-3/4 mx-auto"
     >
-      {cards.map((card, index) => (
+      {shuffledCards.map((card, index) => (
         <motion.div
           variants={{
             initial: {
@@ -64,7 +66,7 @@ const StaggeredRowCards: React.FC = () => {
           className="w-20 h-20 "
           data-tooltip-id="SkillLoopTooltip"
           data-tooltip-content={
-            card.alt.charAt(0).toUpperCase() + card.alt.slice(1)
+            card.name.charAt(0).toUpperCase() + card.name.slice(1)
           }
         >
           <motion.div
@@ -79,7 +81,7 @@ const StaggeredRowCards: React.FC = () => {
               delay: 3,
             }}
           >
-            <Card svg={card.svg} alt={card.alt} />
+            <Card svg={card.svg} alt={card.name} />
           </motion.div>
         </motion.div>
       ))}

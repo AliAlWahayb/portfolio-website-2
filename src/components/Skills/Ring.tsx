@@ -2,15 +2,13 @@ import React from "react";
 import { motion } from "framer-motion";
 import { Tooltip } from "react-tooltip";
 
+
 const buttonData = [
-  { svg: "src/assets/arrow.svg", alt: "arrow" },
-  { svg: "src/assets/tailwind.svg", alt: "tailwind" },
-  { svg: "src/assets/tailwind.svg", alt: "tailwind" },
-  { svg: "src/assets/tailwind.svg", alt: "tailwind" },
-  { svg: "src/assets/tailwind.svg", alt: "tailwind" },
-  { svg: "src/assets/tailwind.svg", alt: "tailwind" },
-  { svg: "src/assets/tailwind.svg", alt: "tailwind" },
-  { svg: "src/assets/tailwind.svg", alt: "tailwind" },
+  { name: "React", svg: "src/assets/logos/TechStack/react-2.svg" },
+  { name: "Docker", svg: "src/assets/logos/TechStack/docker-4.svg" },
+  { name: "Firebase", svg: "src/assets/logos/TechStack/firebase-1.svg" },
+  { name: "FastAPI", svg: "src/assets/logos/TechStack/fastapi-1.svg" },
+  { name: "TypeScript", svg: "src/assets/logos/TechStack/typescript.svg" },
 ];
 
 // Define different radii for desktop and mobile
@@ -43,7 +41,7 @@ const Ring = () => {
             return (
               <button
                 data-tooltip-id="SkillTooltip"
-                data-tooltip-content={button.alt.charAt(0).toUpperCase() + button.alt.slice(1)}
+                data-tooltip-content={button.name.charAt(0).toUpperCase() + button.name.slice(1)}
                 data-tooltip-place="top"
                 key={index}
                 className="absolute rounded-full bg-cover cursor-default 
@@ -58,10 +56,10 @@ const Ring = () => {
                   className="block size-14 sm:size-18 transition-transform 
                              duration-50 rounded-full z-2 bg-card-base p-1"
                 >
-                  <img
+                   <img
                     src={button.svg}
-                    alt={button.alt}
-                    className="w-full h-full object-contain select-none"
+                    alt={button.name}
+                    className="size-12 md:size-16 object-contain select-none"
                   />
                 </motion.span>
               </button>
