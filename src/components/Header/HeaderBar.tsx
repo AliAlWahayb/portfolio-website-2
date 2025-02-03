@@ -7,15 +7,16 @@ import { HiMiniXMark } from "react-icons/hi2";
 import { FaBars } from "react-icons/fa6";
 import Headroom from "react-headroom";
 
-const links = ["Products", "History", "Contact"];
+const links = ["Skills", "Projects", "TimeLine"];
 
 export default function StackedNavbars() {
-  const [isLaunching, setIsLaunching] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-  const handleLaunch = () => {
-    setIsLaunching(true);
-    setTimeout(() => setIsLaunching(false), 1500); // Reset after animation
+  const handleScroll = (id: string) => {
+    const section = document.getElementById(id);
+    if (section) {
+      section.scrollIntoView({ behavior: "smooth" });
+    }
   };
 
   return (
@@ -39,6 +40,7 @@ export default function StackedNavbars() {
                 repeatType: "reverse",
               }}
               className="text-white text-xl font-bold md:hidden"
+              onClick={() => handleScroll("Hero")}
             >
               logo.
             </motion.div>
@@ -58,8 +60,9 @@ export default function StackedNavbars() {
               {links.map((link) => (
                 <a
                   key={link}
-                  href={link}
                   className="text-white font-medium hover:text-gray-300"
+                  onClick={() => handleScroll(link)}
+
                 >
                   {link}
                 </a>
@@ -76,6 +79,7 @@ export default function StackedNavbars() {
                 repeatType: "reverse",
               }}
               className="hidden md:block text-white text-xl font-bold"
+              onClick={() => handleScroll("Hero")}
             >
               logo.
             </motion.div>
@@ -99,18 +103,10 @@ export default function StackedNavbars() {
             {/* Center Logo (Mobile) */}
             <motion.div
               initial={{ opacity: 0, scale: 1, x: -100, y: -100 }}
-              animate={
-                isLaunching
-                  ? {
-                      opacity: 1,
-                      scale: 1.2,
-                      x: [0, 100, -100, 100, -100, 0],
-                      y: [0, 100, -100, 100, -100, 0],
-                    }
-                  : { opacity: 1, scale: 1, x: 0, y: 0 }
-              }
+              animate={{ opacity: 1, scale: 1, x: 0, y: 0 }}
               transition={{ duration: 2, ease: "easeInOut" }}
               className="text-white text-xl font-bold md:hidden"
+              onClick={() => handleScroll("Hero")}
             >
               logo.
             </motion.div>
@@ -130,8 +126,8 @@ export default function StackedNavbars() {
               {links.map((link) => (
                 <a
                   key={link}
-                  href={link}
                   className="text-white font-medium hover:text-gray-300"
+                  onClick={() => handleScroll(link)}
                 >
                   {link}
                 </a>
@@ -141,18 +137,10 @@ export default function StackedNavbars() {
             {/* Center Logo (Desktop Only) */}
             <motion.div
               initial={{ opacity: 0, scale: 1, x: -100, y: -100 }}
-              animate={
-                isLaunching
-                  ? {
-                      opacity: 1,
-                      scale: 1.2,
-                      x: [0, 100, -100, 100, -100, 0],
-                      y: [0, 100, -100, 100, -100, 0],
-                    }
-                  : { opacity: 1, scale: 1, x: 0, y: 0 }
-              }
+              animate={{ opacity: 1, scale: 1, x: 0, y: 0 }}
               transition={{ duration: 2, ease: "easeInOut" }}
               className="hidden md:block text-white text-xl font-bold"
+              onClick={() => handleScroll("Hero")}
             >
               logo.
             </motion.div>
@@ -165,10 +153,7 @@ export default function StackedNavbars() {
               >
                 Sign in
               </a>
-              <button
-                onClick={handleLaunch}
-                className="bg-purple-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-purple-700"
-              >
+              <button className="bg-purple-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-purple-700">
                 Try free
               </button>
             </div>
@@ -192,6 +177,7 @@ export default function StackedNavbars() {
               animate={{ scale: 1.2, opacity: 1 }}
               transition={{ duration: 0.5 }}
               className="text-white text-xl font-bold"
+              onClick={() => handleScroll("Hero")}
             >
               logo.
             </motion.div>
@@ -210,8 +196,8 @@ export default function StackedNavbars() {
             {links.map((link) => (
               <a
                 key={link}
-                href={link}
                 className="block text-white font-medium hover:text-gray-300 text-lg"
+                onClick={() => handleScroll(link)}
               >
                 {link}
               </a>
@@ -226,10 +212,7 @@ export default function StackedNavbars() {
             >
               Sign in
             </a>
-            <button
-              onClick={handleLaunch}
-              className="mt-3 w-full bg-purple-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-purple-700"
-            >
+            <button className="mt-3 w-full bg-purple-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-purple-700">
               Try free
             </button>
           </div>

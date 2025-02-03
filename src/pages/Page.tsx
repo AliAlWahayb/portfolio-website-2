@@ -6,6 +6,7 @@ import TimeLine from "../components/TimeLine/TimeLine";
 import React from "react";
 import useMouse from "@react-hook/mouse-position";
 import CustomCursor from "../components/Misc/CustomCursor";
+import Footer from "../components/Misc/Footer";
 
 
 // Page Component
@@ -24,17 +25,18 @@ const Page: React.FC = () => {
     >
       {(mouse.x || mouse.y) && <CustomCursor x={mouse.x ?? 0} y={mouse.y ?? 0} />}
       <HeaderBar />
-      <div className="min-h-screen">
+      <div className="min-h-screen" id="Hero">
         <Hero />
       </div>
-      <div className="min-h-screen">
+      <div className="min-h-screen" id="Skills">
         <Skills />
       </div>
-      <div className="min-h-screen mb-25">
+      <div className="min-h-screen mb-25" id="Projects">
         <Projects />
       </div>
-      <div className="min-h-screen mb-25">
+      <div className="flex flex-col min-h-screen" id="TimeLine">
         <TimeLine />
+        <Footer/>
       </div>
     </div>
   );

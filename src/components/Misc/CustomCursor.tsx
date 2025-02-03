@@ -8,7 +8,7 @@ const CustomCursor: React.FC<{ x: number; y: number }> = (props) => {
 
   return (
     <motion.div
-      className="absolute ring ring-secondary-base  size-8 rounded-full pointer-events-none z-500"
+      className="hidden md:block absolute ring ring-secondary-base  size-8 rounded-full pointer-events-none z-500"
       style={{
         transform: `translate(-50%, -50%)`, // Center the cursor on the mouse
       }}

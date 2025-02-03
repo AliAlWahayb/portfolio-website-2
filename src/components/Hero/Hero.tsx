@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useState } from "react";
 import BgLight from "../Misc/BgLight";
 import SvgIcon from "./Small/SvgIcon";
@@ -28,8 +29,7 @@ const Hero: React.FC = () => {
               bounds="#DragArea"
               position={position}
               onStart={() => setIsDragging(true)}
-              onStop={(e, data) => {
-                console.log("Stopped dragging", data);
+              onStop={(_e, _data) => {
                 setIsDragging(false);
                 setPosition({ x: 0, y: 0 });
               }}
@@ -59,8 +59,7 @@ const Hero: React.FC = () => {
                   bounds="#DragArea"
                   position={position}
                   onStart={() => setIsDragging(true)}
-                  onStop={(e, data) => {
-                    console.log("Stopped dragging", data);
+                  onStop={(_e, _data) => {
                     setIsDragging(false);
                     setPosition({ x: 0, y: 0 });
                   }}
@@ -92,8 +91,7 @@ const Hero: React.FC = () => {
                   bounds="#DragArea"
                   position={position}
                   onStart={() => setIsDragging(true)}
-                  onStop={(e, data) => {
-                    console.log("Stopped dragging", data);
+                  onStop={(_e, _data) => {
                     setIsDragging(false);
                     setPosition({ x: 0, y: 0 });
                   }}
