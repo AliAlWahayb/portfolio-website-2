@@ -50,6 +50,7 @@ export default function Projects() {
                 "https://camo.githubusercontent.com/e4ac671f7defcca137f5063d3c6afb2418d9cf2ea5bf411218364c9676028ff9/68747470733a2f2f692e696d6775722e636f6d2f654f513662396e2e706e67",
                 "https://camo.githubusercontent.com/e019f85776996f48cab6b7cd2e01bb62b298aca8e74560209fae2a04a6abe8c3/68747470733a2f2f692e696d6775722e636f6d2f5a526d42466f782e706e67", ]}
               lgImageAlt="Heat Stroke Alert photo"
+              LearnMore="https://github.com/AliAlWahayb/HeatStrokeAlertApp3.git"
             />
           </motion.div>
           <motion.div

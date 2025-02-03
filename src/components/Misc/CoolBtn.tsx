@@ -3,7 +3,7 @@ import React from "react";
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 function CoolBtn(props: any) {
   return (
-    <button className="cursor-pointer flex justify-between bg-background-100 px-3 py-2 rounded-xl text-white tracking-wider shadow-xl hover:bg-background-800 hover:scale-105 duration-500 hover:ring-1 font-mono w-[150px]">
+    <button className={` ${props.className} cursor-pointer flex justify-between bg-background-100 px-3 py-2 rounded-xl text-white tracking-wider shadow-xl hover:bg-background-800 hover:scale-105 duration-500 hover:ring-1 font-mono w-[150px] `}>
 
       {props.text}
       <svg
