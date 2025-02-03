@@ -7,7 +7,8 @@ import { HiOutlineMail } from "react-icons/hi";
 import { ReactTyped } from "react-typed";
 import Draggable from "react-draggable";
 import { Tooltip } from "react-tooltip";
-import CoolBtn from "./Small/CoolBtn";
+import CoolBtn from "../Misc/CoolBtn";
+import { motion } from "framer-motion";
 
 const Hero: React.FC = () => {
   const [showSecondTyped, setShowSecondTyped] = useState(false);
@@ -17,7 +18,7 @@ const Hero: React.FC = () => {
   const [isDragging, setIsDragging] = useState(false);
 
   return (
-    <div className="relative isolate px-6 lg:px-8" id="DragArea">
+    <div className=" mt-25 relative isolate px-6 lg:px-8" id="DragArea">
       <BgLight />
       <div className="mx-auto max-w-2xl py-32 sm:py-48 lg:py-18">
         <div className="hidden sm:mb-8 sm:flex sm:justify-center"></div>
@@ -47,7 +48,7 @@ const Hero: React.FC = () => {
                   startDelay={500}
                   typeSpeed={40}
                   showCursor={false}
-                  className="text-5xl font-semibold tracking-tight text-balance text-gray-900 sm:text-7xl"
+                  className="text-5xl font-semibold tracking-tight text-balance text-text-base sm:text-7xl"
                   onComplete={() => setShowSecondTyped(true)}
                 />
               </div>
@@ -79,7 +80,7 @@ const Hero: React.FC = () => {
                       ]}
                       typeSpeed={40}
                       showCursor={false}
-                      className="mt-8 text-lg font-medium text-pretty text-gray-500 sm:text-xl/8 me-1"
+                      className="mt-8 text-lg font-medium text-pretty text-secondary-text-base sm:text-xl/8 me-1"
                       onComplete={() => setShowThirdTyped(true)}
                     />
                   </div>
@@ -115,14 +116,19 @@ const Hero: React.FC = () => {
                       typeSpeed={40}
                       backSpeed={40}
                       loop
-                      className="mt-8 text-lg font-medium text-pretty text-gray-500 sm:text-xl/8"
+                      className="mt-8 text-lg font-medium text-pretty text-secondary-text-base sm:text-xl/8"
                     />
                   </div>
                 </Draggable>
               )}
             </div>
           </div>
-          <div className=" mt-10 flex items-center justify-center gap-x-6">
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: showThirdTyped ? 1 : 0 }}
+            transition={{ delay: 0.5, duration: 0.5 }}
+            className=" mt-10 flex items-center justify-center gap-x-6"
+          >
             <SvgIcon
               name="Github"
               link="https://github.com/AliAlWahayb"
@@ -138,12 +144,17 @@ const Hero: React.FC = () => {
               link="https://www.linkedin.com/in/alialwahayb"
               icon={<TfiLinkedin className="size-8" />}
             />
-          </div>
-          <div className=" flex items-center justify-center mx-auto  max-w-2xl sm:mt-16">
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: showThirdTyped ? 1 : 0 }}
+            transition={{ delay: 1, duration: 0.5 }}
+            className=" flex items-center justify-center mx-auto  max-w-2xl sm:mt-16"
+          >
             <a href="assets/Ali AlWahayb.pdf" target="_blank">
               <CoolBtn text="Open CV" />
             </a>
-          </div>
+          </motion.div>
         </div>
       </div>
       <BgLight />
@@ -151,9 +162,18 @@ const Hero: React.FC = () => {
         id="DragTooltip"
         float={true}
         noArrow={true}
-        place="right-end"
         content="Drag me!"
         variant="light"
+        offset={10}
+        place="top"
+        delayShow={250}
+        delayHide={250}
+        style={{
+          background: "#fff",
+          color: "#364153",
+          fontWeight: "bold",
+          borderRadius: "8px",
+        }}
       />
     </div>
   );

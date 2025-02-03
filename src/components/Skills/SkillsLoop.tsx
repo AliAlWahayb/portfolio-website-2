@@ -63,7 +63,9 @@ const StaggeredRowCards: React.FC = () => {
           key={index}
           className="w-20 h-20"
           data-tooltip-id="SkillLoopTooltip"
-          data-tooltip-content={card.alt}
+          data-tooltip-content={
+            card.alt.charAt(0).toUpperCase() + card.alt.slice(1)
+          }
         >
           <motion.div
             initial={{ translateY: -10 }}
@@ -81,7 +83,21 @@ const StaggeredRowCards: React.FC = () => {
           </motion.div>
         </motion.div>
       ))}
-      <Tooltip id="SkillLoopTooltip" offset={3} variant="light" />
+      <Tooltip
+        id="SkillLoopTooltip"
+        offset={10}
+        variant="light"
+        place="top"
+        delayShow={250}
+        delayHide={250}
+        noArrow={true}
+        style={{
+          background: "#fff",
+          color: "#364153",
+          fontWeight: "bold",
+          borderRadius: "8px",
+        }}
+      />
     </motion.div>
   );
 };

@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useState } from "react";
 import { motion } from "framer-motion";
-import CoolBtn from "./CoolBtn";
+import CoolBtn from "../../Misc/CoolBtn";
 import { IoCloseSharp } from "react-icons/io5";
 
 function CardCol(props: any) {
@@ -26,10 +26,10 @@ function CardCol(props: any) {
         {!isExpanded ? (
           <div className="relative flex h-full flex-col overflow-hidden rounded-[calc(var(--radius-lg)+1px)] lg:rounded-t-[calc(2rem+1px)]">
             <div className="px-8 pt-5 sm:px-10 sm:pt-5">
-              <p className="mt-2 text-lg font-medium tracking-tight text-gray-900 max-lg:text-center">
+              <p className="mt-2 text-lg font-medium tracking-tight text-text-base max-lg:text-center">
                 {props.title}
               </p>
-              <p className="mt-2 max-w-lg text-sm/6 text-gray-500 max-lg:text-center">
+              <p className="mt-2 max-w-lg text-sm/6 text-secondary-text-base max-lg:text-center">
                 {props.description}
               </p>
             </div>
@@ -57,10 +57,10 @@ function CardCol(props: any) {
             </button>
             <div className="relative flex h-full flex-col overflow-hidden rounded-[calc(var(--radius-lg)+1px)] lg:rounded-t-[calc(2rem+1px)]">
               <div className="px-8 pt-8 sm:px-10 sm:pt-10">
-                <p className="mt-2 text-3xl font-medium tracking-tight text-gray-900 max-lg:text-center">
+                <p className="mt-2 text-3xl font-medium tracking-tight text-text-base max-lg:text-center">
                   {props.lgTitle}
                 </p>
-                <p className="mt-2 max-w-xl text-sm/6 text-gray-500 max-lg:text-center">
+                <p className="mt-2 max-w-xl text-sm/6 text-secondary-text-base max-lg:text-center">
                   {props.lgDescription}
                 </p>
               </div>

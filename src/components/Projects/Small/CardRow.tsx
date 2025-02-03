@@ -1,14 +1,14 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useState } from "react";
 import { motion } from "framer-motion";
-import CoolBtn from "./CoolBtn";
+import CoolBtn from "../../Misc/CoolBtn";
 import { IoCloseSharp } from "react-icons/io5";
 
 function CardRow(props: any) {
   const [isExpanded, setIsExpanded] = useState(false);
 
   return (
-    <div className="relative lg:row-span-2">
+    <div className="relative lg:row-span-2 h-full">
       {/* Added a wrapper to maintain layout space */}
       <motion.div
         layout
@@ -26,10 +26,10 @@ function CardRow(props: any) {
         {!isExpanded ? (
           <div className="relative flex h-full flex-col overflow-hidden rounded-[calc(var(--radius-lg)+1px)] lg:rounded-l-[calc(2rem+1px)]">
             <div className="px-8 pt-5 pb-3 sm:px-10 sm:pt-5 sm:pb-0">
-              <p className="mt-2 text-lg font-medium tracking-tight text-gray-900 max-lg:text-center">
+              <p className="mt-2 text-lg font-medium tracking-tight text-text-base max-lg:text-center">
                 {props.title}
               </p>
-              <p className="mt-2 max-w-lg text-sm/6 text-gray-500 max-lg:text-center">
+              <p className="mt-2 max-w-lg text-sm/6 text-secondary-text-base max-lg:text-center">
                 {props.description}
               </p>
             </div>
@@ -59,10 +59,10 @@ function CardRow(props: any) {
             </button>
             <div className="relative flex h-full flex-col overflow-hidden rounded-[calc(var(--radius-lg)+1px)] lg:rounded-l-[calc(2rem+1px)]">
               <div className="px-8 pt-8 pb-3 sm:px-10 sm:pt-10 sm:pb-0">
-                <p className="mt-2 text-3xl font-medium tracking-tight text-gray-900 max-lg:text-center">
+                <p className="mt-2 text-3xl font-medium tracking-tight text-text-base max-lg:text-center">
                   {props.lgTitle}
                 </p>
-                <p className="mt-2 max-w-lg text-xl/6 text-gray-500 max-lg:text-center">
+                <p className="mt-2 max-w-lg text-xl/6 text-secondary-text-base max-lg:text-center">
                   {props.lgDescription}
                 </p>
               </div>

@@ -8,7 +8,7 @@ function SvgIcon(props: any) {
             ? window.open(props.link, "_blank")
             : (window.location.href = "mailto:" + props.email)
         }
-        className="p-2 hover:scale-125 duration-200 hover:text-blue-500"
+        className="p-2 hover:scale-125 duration-200 hover:text-primary-base"
       >
         {props.icon}
       </button>

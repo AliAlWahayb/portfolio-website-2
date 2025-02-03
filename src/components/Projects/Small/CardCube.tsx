@@ -1,14 +1,14 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { motion } from "framer-motion";
 import { useState } from "react";
-import CoolBtn from "./CoolBtn";
+import CoolBtn from "../../Misc/CoolBtn";
 import { IoCloseSharp } from "react-icons/io5";
 
 function CardCube(props: any) {
   const [isExpanded, setIsExpanded] = useState(false);
 
   return (
-    <div className="relative">
+    <div className="relative h-full">
       {/* Added parent wrapper */}
       <motion.div
         layout
@@ -26,10 +26,10 @@ function CardCube(props: any) {
         {!isExpanded ? (
           <div className="relative flex h-full flex-col overflow-hidden">
             <div className="px-8 pt-5 sm:px-10 sm:pt-5">
-              <p className="mt-2 text-lg font-medium tracking-tight text-gray-900">
+              <p className="mt-2 text-lg font-medium tracking-tight text-text-base">
                 {props.title}
               </p>
-              <p className="mt-2 max-w-lg text-sm/6 text-gray-500">
+              <p className="mt-2 max-w-lg text-sm/6 text-secondary-text-base">
                 {props.description}
               </p>
             </div>
@@ -57,10 +57,10 @@ function CardCube(props: any) {
             </button>
             <div className="relative flex h-full flex-col overflow-hidden">
               <div className="px-8 pt-8 sm:px-10 sm:pt-10">
-                <p className="mt-2 text-3xl font-medium tracking-tight text-gray-900">
+                <p className="mt-2 text-3xl font-medium tracking-tight text-text-base">
                   {props.lgTitle}
                 </p>
-                <p className="mt-2 max-w-lg text-xl/6 text-gray-500">
+                <p className="mt-2 max-w-lg text-xl/6 text-secondary-text-base">
                   {props.lgDescription}
                 </p>
               </div>
