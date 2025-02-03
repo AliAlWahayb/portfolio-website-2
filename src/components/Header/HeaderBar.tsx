@@ -1,11 +1,17 @@
+"use client";
+
 import { motion } from "framer-motion";
 import { useState } from "react";
+import { Dialog, DialogPanel } from "@headlessui/react";
+import { HiMiniXMark } from "react-icons/hi2";
+import { FaBars } from "react-icons/fa6";
 import Headroom from "react-headroom";
 
 const links = ["Products", "History", "Contact"];
 
 export default function StackedNavbars() {
   const [isLaunching, setIsLaunching] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const handleLaunch = () => {
     setIsLaunching(true);
@@ -14,96 +20,221 @@ export default function StackedNavbars() {
 
   return (
     <Headroom
-      className="relative z-100 "
+      className="relative z-100"
       style={{
         transition: "transform .5s ease-in-out",
       }}
     >
-      <div className="mt-3 flex justify-center">
-        <nav className="absolute  w-[90%] md:w-[70%] bg-black/30 backdrop-blur-lg rounded-2xl shadow-lg flex items-center justify-between px-6 py-3">
-          {/* Left Section */}
-          <div className="flex space-x-6">
-            {links.map((link) => (
+      {!mobileMenuOpen && (
+        <div className="mt-3 flex justify-center">
+          {/* Top Navbar */}
+          <nav className="absolute w-[90%] md:w-[70%] bg-black/30 backdrop-blur-lg rounded-2xl shadow-lg flex items-center justify-between px-6 py-3">
+            {/* Center Logo (Mobile) */}
+            <motion.div
+              initial={{ scale: 0.1, opacity: 0 }}
+              animate={{ scale: 1.5, opacity: 1 }}
+              transition={{
+                duration: 3.5,
+                repeat: Infinity,
+                repeatType: "reverse",
+              }}
+              className="text-white text-xl font-bold md:hidden"
+            >
+              logo.
+            </motion.div>
+
+            {/* Mobile: Hamburger Menu (Flipped to Right) */}
+            <div className="md:hidden ml-auto">
+              <button
+                onClick={() => setMobileMenuOpen(true)}
+                className="text-white text-2xl"
+              >
+                <FaBars />
+              </button>
+            </div>
+
+            {/* Left Section (Desktop) */}
+            <div className="hidden md:flex space-x-6">
+              {links.map((link) => (
+                <a
+                  key={link}
+                  href={link}
+                  className="text-white font-medium hover:text-gray-300"
+                >
+                  {link}
+                </a>
+              ))}
+            </div>
+
+            {/* Center Logo (Desktop Only) */}
+            <motion.div
+              initial={{ scale: 0.1, opacity: 0 }}
+              animate={{ scale: 1.5, opacity: 1 }}
+              transition={{
+                duration: 3.5,
+                repeat: Infinity,
+                repeatType: "reverse",
+              }}
+              className="hidden md:block text-white text-xl font-bold"
+            >
+              logo.
+            </motion.div>
+
+            {/* Right Section */}
+            <div className="hidden md:hidden space-x-4 items-center">
               <a
-                href={link}
+                href="#"
                 className="text-white font-medium hover:text-gray-300"
               >
-                {link}
+                Sign in
               </a>
-            ))}
-          </div>
+              <button className="bg-purple-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-purple-700">
+                Try free
+              </button>
+            </div>
+          </nav>
 
-          {/* Center Logo */}
-          <motion.div
-            initial={{ scale: 0.1, opacity: 0 }}
-            animate={{ scale: 1.5, opacity: 1 }}
-            transition={{
-              duration: 3.5,
-              repeat: Infinity,
-              repeatType: "reverse",
-            }}
-            className="text-white text-xl font-bold"
-          >
-            logo.
-          </motion.div>
+          {/* Second Navbar */}
+          <nav className="w-[90%] md:w-[70%] bg-black/20 backdrop-blur-xl rounded-2xl shadow-lg flex items-center justify-between px-6 py-3 border border-white/10">
+            {/* Center Logo (Mobile) */}
+            <motion.div
+              initial={{ opacity: 0, scale: 1, x: -100, y: -100 }}
+              animate={
+                isLaunching
+                  ? {
+                      opacity: 1,
+                      scale: 1.2,
+                      x: [0, 100, -100, 100, -100, 0],
+                      y: [0, 100, -100, 100, -100, 0],
+                    }
+                  : { opacity: 1, scale: 1, x: 0, y: 0 }
+              }
+              transition={{ duration: 2, ease: "easeInOut" }}
+              className="text-white text-xl font-bold md:hidden"
+            >
+              logo.
+            </motion.div>
 
-          {/* Right Section */}
-          <div className="flex space-x-4 items-center">
-            <a href="#" className="text-white font-medium hover:text-gray-300">
-              Sign in
-            </a>
-            <button className="bg-purple-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-purple-700">
-              Try free
+            {/* Mobile: Hamburger Menu (Flipped to Right) */}
+            <div className="md:hidden ml-auto">
+              <button
+                onClick={() => setMobileMenuOpen(true)}
+                className="text-white text-2xl "
+              >
+                <FaBars />
+              </button>
+            </div>
+
+            {/* Left Section (Desktop) */}
+            <div className="hidden md:flex space-x-6">
+              {links.map((link) => (
+                <a
+                  key={link}
+                  href={link}
+                  className="text-white font-medium hover:text-gray-300"
+                >
+                  {link}
+                </a>
+              ))}
+            </div>
+
+            {/* Center Logo (Desktop Only) */}
+            <motion.div
+              initial={{ opacity: 0, scale: 1, x: -100, y: -100 }}
+              animate={
+                isLaunching
+                  ? {
+                      opacity: 1,
+                      scale: 1.2,
+                      x: [0, 100, -100, 100, -100, 0],
+                      y: [0, 100, -100, 100, -100, 0],
+                    }
+                  : { opacity: 1, scale: 1, x: 0, y: 0 }
+              }
+              transition={{ duration: 2, ease: "easeInOut" }}
+              className="hidden md:block text-white text-xl font-bold"
+            >
+              logo.
+            </motion.div>
+
+            {/* Right Section (Desktop) */}
+            <div className="hidden md:hidden  space-x-4 items-center">
+              <a
+                href="#"
+                className="text-white font-medium hover:text-gray-300"
+              >
+                Sign in
+              </a>
+              <button
+                onClick={handleLaunch}
+                className="bg-purple-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-purple-700"
+              >
+                Try free
+              </button>
+            </div>
+          </nav>
+        </div>
+      )}
+
+      {/* Mobile Dropdown Menu */}
+      <Dialog
+        open={mobileMenuOpen}
+        onClose={setMobileMenuOpen}
+        className="md:hidden"
+      >
+        <div className="fixed inset-0 z-50 bg-transparent" />{" "}
+        {/* More Transparent */}
+        <DialogPanel className="fixed inset-y-0 right-0 z-50 w-full sm:max-w-xs bg-black/70 backdrop-blur-lg px-6 py-6">
+          <div className="flex items-center justify-between">
+            {/* Logo (Flipped to Left) */}
+            <motion.div
+              initial={{ scale: 0.1, opacity: 0 }}
+              animate={{ scale: 1.2, opacity: 1 }}
+              transition={{ duration: 0.5 }}
+              className="text-white text-xl font-bold"
+            >
+              logo.
+            </motion.div>
+
+            {/* Close Button */}
+            <button
+              onClick={() => setMobileMenuOpen(false)}
+              className="text-white text-2xl"
+            >
+              <HiMiniXMark />
             </button>
           </div>
-        </nav>
-        {/* second nav */}
-        <nav className=" w-[90%] md:w-[70%] bg-black/20 backdrop-blur-xl rounded-2xl shadow-lg flex items-center justify-between px-6 py-3 border border-white/10">
-          {/* Left Section */}
-          <div className="flex space-x-6">
+
+          {/* Links */}
+          <div className="mt-6 space-y-4">
             {links.map((link) => (
               <a
+                key={link}
                 href={link}
-                className="text-white font-medium hover:text-gray-300"
+                className="block text-white font-medium hover:text-gray-300 text-lg"
               >
                 {link}
               </a>
             ))}
           </div>
 
-          {/* Center Logo */}
-          <motion.div
-            initial={{ opacity: 0, scale: 1, x: -100, y: -100 }}
-            animate={
-              isLaunching
-                ? {
-                    opacity: 1,
-                    scale: 1.2,
-                    x: [0, 100, -100, 100, -100, 0],
-                    y: [0, 100, -100, 100, -100, 0],
-                  }
-                : { opacity: 1, scale: 1, x: 0, y: 0 }
-            }
-            transition={{ duration: 2, ease: "easeInOut" }}
-            className="text-white text-xl font-bold"
-          >
-            logo.
-          </motion.div>
-
-          {/* Right Section */}
-          <div className="flex space-x-4 items-center">
-            <a href="#" className="text-white font-medium hover:text-gray-300">
+          {/* Buttons */}
+          <div className="mt-6 hidden">
+            <a
+              href="#"
+              className="block text-white font-medium hover:text-gray-300"
+            >
               Sign in
             </a>
             <button
               onClick={handleLaunch}
-              className="bg-purple-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-purple-700"
+              className="mt-3 w-full bg-purple-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-purple-700"
             >
               Try free
             </button>
           </div>
-        </nav>
-      </div>
+        </DialogPanel>
+      </Dialog>
     </Headroom>
   );
 }
