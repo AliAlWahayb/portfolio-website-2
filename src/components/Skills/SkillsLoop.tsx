@@ -43,7 +43,7 @@ const StaggeredRowCards: React.FC = () => {
       whileInView="whileInView"
       transition={{ staggerChildren: 0.1 }}
       viewport={{ once: true }}
-      className="flex flex-wrap justify-center gap-4 w-3/4 mx-auto"
+      className="flex flex-wrap justify-center items-center gap-1 md:gap-4 w-3/4 mx-auto"
     >
       {cards.map((card, index) => (
         <motion.div
@@ -61,7 +61,7 @@ const StaggeredRowCards: React.FC = () => {
             },
           }}
           key={index}
-          className="w-20 h-20"
+          className="w-20 h-20 "
           data-tooltip-id="SkillLoopTooltip"
           data-tooltip-content={
             card.alt.charAt(0).toUpperCase() + card.alt.slice(1)

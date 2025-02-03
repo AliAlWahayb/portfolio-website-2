@@ -22,7 +22,7 @@ const Page: React.FC = () => {
       className="bg-background-base overflow-hidden cursor-follow relative"
       id="rootPage"
     >
-      <CustomCursor x={mouse.x ?? 0} y={mouse.y ?? 0} />
+      {(mouse.x || mouse.y) && <CustomCursor x={mouse.x ?? 0} y={mouse.y ?? 0} />}
       <HeaderBar />
       <div className="min-h-screen">
         <Hero />

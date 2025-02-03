@@ -151,7 +151,7 @@ const Hero: React.FC = () => {
             transition={{ delay: 1, duration: 0.5 }}
             className=" flex items-center justify-center mx-auto  max-w-2xl sm:mt-16"
           >
-            <a href="assets/Ali AlWahayb.pdf" target="_blank">
+            <a href="assets/Ali AlWahayb.pdf" target="_blank" className="my-7 md:-my-5">
               <CoolBtn text="Open CV" />
             </a>
           </motion.div>

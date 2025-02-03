@@ -49,40 +49,47 @@ function CardCube(props: any) {
           </div>
         ) : (
           <>
-            <button
-              className="absolute top-4 right-4 p-2 bg-background-base rounded-full shadow-md z-101 cursor-pointer hover:bg-gray-200 transition"
-              onClick={() => setIsExpanded(false)}
-            >
-              <IoCloseSharp size={24} />
-            </button>
-            <div className="relative flex h-full flex-col overflow-hidden">
-              <div className="px-8 pt-8 sm:px-10 sm:pt-10">
-                <p className="mt-2 text-3xl font-medium tracking-tight text-text-base">
+            <div className="relative flex h-full flex-col overflow-hidden rounded-[calc(var(--radius-lg)+1px)] lg:rounded-l-[calc(2rem+1px)]">
+              {/* Close Button */}
+              <button
+                className="absolute top-4 right-4 z-50 p-2 bg-background-base rounded-full shadow-md cursor-pointer hover:bg-gray-200 transition"
+                onClick={() => setIsExpanded(false)}
+              >
+                <IoCloseSharp size={24} />
+              </button>
+
+              {/* Title & Description */}
+              <div className="px-6 pt-8 pb-3 sm:px-10 sm:pt-10 sm:pb-0 text-center lg:text-left">
+                <p className="text-3xl font-medium tracking-tight text-text-base">
                   {props.lgTitle}
                 </p>
-                <p className="mt-2 max-w-lg text-xl/6 text-secondary-text-base">
+                <p className="mt-2 max-w-lg mx-auto lg:mx-0 text-xl text-secondary-text-base">
                   {props.lgDescription}
                 </p>
               </div>
-              <div className="flex flex-1 items-center justify-center px-8 max-lg:py-6 sm:px-10 lg:pb-2">
+
+              {/* Image Container */}
+              <div className="relative min-h-[30rem] w-full flex justify-center px-6 lg:px-10">
                 {Array.isArray(props.lgImageUrl) ? (
-                  <div className="grid grid-cols-2 gap-4 p-10">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     {props.lgImageUrl.map(
-                      (image: string | undefined, index: any) => (
+                      (image: string | undefined, index: number) => (
                         <img
                           key={index}
-                          className="w-full object-cover rounded-lg"
+                          className="w-full max-w-[500px] h-auto lg:h-[300px] object-cover rounded-lg"
                           src={image}
-                          alt={props.lgImageAlt?.[index] || "Image"}
+                          alt={
+                            props.lgImageAlt?.[index] || `Image ${index + 1}`
+                          }
                         />
                       )
                     )}
                   </div>
                 ) : (
                   <img
-                    className="w-full object-cover p-10"
+                    className="w-full  h-auto md:my-10 object-cover rounded-lg"
                     src={props.lgImageUrl}
-                    alt={props.lgImageAlt}
+                    alt={props.lgImageAlt || "Image"}
                   />
                 )}
               </div>
