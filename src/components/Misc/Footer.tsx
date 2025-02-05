@@ -18,10 +18,10 @@ const ComponentTemplate: React.FC = () => {
       className=" relative h-40 flex items-start px-4 md:justify-center"
     >
       {/* Vertical Line - Start in Small Screens, Centered in md: */}
-      <div className="absolute left-7.25 md:left-1/2 top-0 h-3/4 w-1 bg-primary-base transform md:-translate-x-1/2"></div>
+      <div className="absolute left-7 md:left-1/2 top-0 h-3/4 w-1 bg-primary-base transform md:-translate-x-1/2"></div>
 
       {/* Horizontal Line - Starts from Left on Small Screens, Centered in md: */}
-      <div className="absolute left-7.25 md:left-1/2 top-3/4 w-full h-1 bg-primary-base transform md:-translate-x-1/2">
+      <div className="absolute left-7 md:left-1/2 top-3/4 w-full h-1 bg-primary-base transform md:-translate-x-1/2">
         <div className=" text-sm -mt-6 -ms-5 text-white font-bold text-center md:ml-6 md:text-left md:text-base">
           Copyright © {new Date().getFullYear()} AliAlWahayb - All rights
           reserved.
