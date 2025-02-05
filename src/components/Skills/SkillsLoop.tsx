@@ -17,19 +17,19 @@ const StaggeredRowCards: React.FC = () => {
   };
 
   const cards = [
-    { name: "C++", svg: "src/assets/logos/c.svg" },
-    { name: "Vue.js", svg: "src/assets/logos/vue-9.svg" },
-    { name: "Java", svg: "src/assets/logos/java.svg" },
-    { name: "GitHub", svg: "src/assets/logos/github-icon-1.svg" },
-    { name: "Prolog", svg: "src/assets/logos/prolog-svgrepo-com.svg" },
-    { name: "PyQt", svg: "src/assets/logos/qt-1.svg" },
-    { name: "SQL", svg: "src/assets/logos/mysql-logo-pure.svg" },
-    { name: "Figma", svg: "src/assets/logos/figma-icon.svg" },
-    { name: "Git", svg: "src/assets/logos/git-bash.svg" },
-    { name: "Bootstrap", svg: "src/assets/logos/bootstrap-5-1.svg" },
-    { name: "Framer-Motion", svg: "src/assets/logos/framer-motion.svg" },
-    { name: "Tailwind", svg: "src/assets/logos/tailwind-css-1.svg" },
-    { name: "javascript", svg: "src/assets/logos/logo-javascript.svg" },
+    { name: "C++", svg: "/assets/logos/c.svg" },
+    { name: "Vue.js", svg: "/assets/logos/vue-9.svg" },
+    { name: "Java", svg: "/assets/logos/java.svg" },
+    { name: "GitHub", svg: "/assets/logos/github-icon-1.svg" },
+    { name: "Prolog", svg: "/assets/logos/prolog-svgrepo-com.svg" },
+    { name: "PyQt", svg: "/assets/logos/qt-1.svg" },
+    { name: "SQL", svg: "/assets/logos/mysql-logo-pure.svg" },
+    { name: "Figma", svg: "/assets/logos/figma-icon.svg" },
+    { name: "Git", svg: "/assets/logos/git-bash.svg" },
+    { name: "Bootstrap", svg: "/assets/logos/bootstrap-5-1.svg" },
+    { name: "Framer-Motion", svg: "/assets/logos/framer-motion.svg" },
+    { name: "Tailwind", svg: "/assets/logos/tailwind-css-1.svg" },
+    { name: "javascript", svg: "/assets/logos/logo-javascript.svg" },
   ];
 
   const shuffledCards = useMemo(() => shuffleArray(cards), []);

@@ -12,7 +12,7 @@ const Skills: React.FC = () => {
       <div className="relative flex items-center justify-center h-full w-full overflow-hidden z-2">
         <Ring />
         <Spline
-          scene="src/assets/emoji.spline"
+          scene="https://prod.spline.design/DGy5t6c8afAmsqbR/scene.splinecode"
           className="absolute inset-0 z-0 pointer-events-auto flex items-center justify-center "
         />
       </div>

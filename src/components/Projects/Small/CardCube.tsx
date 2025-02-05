@@ -40,12 +40,12 @@ function CardCube(props: any) {
                 alt={props.imageAlt}
               />
             </div>
-            <button
+            <a
               onClick={() => setIsExpanded(true)}
               className="w-fit self-center my-4"
             >
               <CoolBtn text="Learn More" />
-            </button>
+            </a>
           </div>
         ) : (
           <Modal onClose={() => setIsExpanded(false)} {...props} />

@@ -8,6 +8,8 @@ import { FaBars } from "react-icons/fa6";
 import Headroom from "react-headroom";
 import FlipLink from "./Small/FlipLink";
 
+
+const logo = "/assets/logo.svg";
 const links = ["Skills", "Projects", "TimeLine"];
 
 export default function StackedNavbars() {
@@ -43,7 +45,7 @@ export default function StackedNavbars() {
               className="text-white text-xl font-bold md:hidden cursor-pointer"
               onClick={() => handleScroll("Hero")}
             >
-              <img src="src/assets/logo.svg" alt="logo" className="w-10"/>
+              <img src={ logo } alt="logo" className="w-10"/>
               </motion.div>
 
             {/* Mobile: Hamburger Menu (Flipped to Right) */}
@@ -77,7 +79,7 @@ export default function StackedNavbars() {
               className="hidden md:block text-white text-xl font-bold cursor-pointer"
               onClick={() => handleScroll("Hero")}
             >
-              <img src="src/assets/logo.svg" alt="logo" className="w-10"/>
+              <img src={ logo } alt="logo" className="w-10"/>
               </motion.div>
 
             {/* Right Section */}
@@ -104,7 +106,7 @@ export default function StackedNavbars() {
               className="text-white text-xl font-bold md:hidden cursor-pointer"
               onClick={() => handleScroll("Hero")}
             >
-              <img src="src/assets/logo.svg" alt="logo" className="w-10"/>
+              <img src={ logo } alt="logo" className="w-10"/>
               </motion.div>
 
             {/* Mobile: Hamburger Menu (Flipped to Right) */}
@@ -134,7 +136,7 @@ export default function StackedNavbars() {
               className="hidden md:block text-white text-xl font-bold cursor-pointer"
               onClick={() => handleScroll("Hero")}
             >
-              <img src="src/assets/logo.svg" alt="logo" className="w-10"/>
+              <img src={ logo } alt="logo" className="w-10"/>
             </motion.div>
 
             {/* Right Section (Desktop) */}
@@ -171,7 +173,7 @@ export default function StackedNavbars() {
               className="text-white text-xl font-bold cursor-pointer"
               onClick={() => handleScroll("Hero")}
             >
-              <img src="src/assets/logo.svg" alt="logo" className="w-10"/>
+              <img src={ logo } alt="logo" className="w-10"/>
               </motion.div>
 
             {/* Close Button */}
