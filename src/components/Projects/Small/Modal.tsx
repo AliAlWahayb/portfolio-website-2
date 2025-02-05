@@ -38,38 +38,50 @@ function Modal(props: any) {
             </p>
 
             {/* Image Container */}
-            <div className="relative min-h-[30rem] w-full flex justify-center px-6 lg:px-10 mt-6">
+            <div className="w-full px-4 md:px-6 lg:px-8 mt-6 space-y-6">
               {Array.isArray(props.lgImageUrl) ? (
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:flex">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
                   {props.lgImageUrl.map(
                     (image: string | undefined, index: number) => (
-                      <img
+                      <div
                         key={index}
-                        className="w-full max-w-[500px] h-auto lg:h-[90%] object-cover rounded-lg"
-                        src={image}
-                        alt={props.lgImageAlt?.[index] || `Image ${index + 1}`}
-                      />
+                        className="relative group overflow-hidden"
+                      >
+                        <img
+                          className="w-full h-auto object-contain md:aspect-square"
+                          src={image}
+                          alt={
+                            props.lgImageAlt?.[index] ||
+                            `Project image ${index + 1}`
+                          }
+                          loading="lazy"
+                          width={600}
+                          height={400}
+                        />
+                      </div>
                     )
                   )}
                 </div>
               ) : (
-                <img
-                  className="w-full max-w-[600px] mx-auto h-auto md:w-auto md:my-10 object-cover rounded-lg"
-                  src={props.lgImageUrl}
-                  alt={props.lgImageAlt || "Image"}
-                />
+                <div className="max-w-4xl mx-auto  rounded-2xl p-4 md:p-6 ">
+                  <img
+                    className="w-full h-auto object-contain rounded-lg"
+                    src={props.lgImageUrl}
+                    alt={props.lgImageAlt || "Project main image"}
+                    loading="lazy"
+                    width={1200}
+                    height={800}
+                  />
+                </div>
               )}
             </div>
             {props.LearnMore && (
               <a
                 href={props.LearnMore}
                 target="_blank"
-                className="flex justify-center md:-my-25 my-5 cursor-pointer"
+                className="flex justify-center my-5 cursor-pointer"
               >
-                <CoolBtn
-                  text="Learn More"
-                  className=" scale-150"
-                />
+                <CoolBtn text="Learn More" className="scale-150" />
               </a>
             )}
           </div>

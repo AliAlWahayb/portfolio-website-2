@@ -135,7 +135,7 @@ const Hero: React.FC = () => {
               target="_blank"
               className="my-7 md:-my-5"
             >
-              <CoolBtn text="Open CV" />
+              <CoolBtn text="Open CV" className="bg-card-900" />
             </a>
           </motion.div>
         </div>

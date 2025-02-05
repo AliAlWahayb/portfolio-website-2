@@ -1,15 +1,13 @@
-import CardCol from "./Small/CardCol";
+import CardColAudio from "./Small/CardColAudio";
 import CardCube from "./Small/CardCube";
-import CardRow from "./Small/CardRow";
 import { motion } from "framer-motion";
 
 export default function Projects() {
-  const childDuration = 0.3
+  const childDuration = 0.3;
   const variants = {
     initial: { opacity: 0, y: 20 },
     whileInView: { opacity: 1, y: 0 },
-
-  }
+  };
   return (
     <div className="py-24 sm:py-32 relative">
       <div className="mx-auto max-w-2xl px-6 lg:max-w-7xl lg:px-8">
@@ -35,20 +33,68 @@ export default function Projects() {
             initial="initial"
             whileInView="whileInView"
             viewport={{ once: true }}
-            className="lg:row-span-2"
+            className="lg:col-span-2"
           >
-            <CardRow
+            <CardColAudio
+              title="Book to AudioBook Project"
+              description="The Book to AudioBook Project is a web application that converts PDF text into narrated audiobooks, using Google Document AI for text extraction and Coqui TTS for custom AI voice generation."
+              audioUrl="/audio/Callum-Long-Callum-V1-51.mp3"
+              className="lg:col-span-2 h-full"
+              lgTitle="Book to AudioBook Project"
+              lgDescription="The Book to AudioBook Project automates the conversion of PDFs into audiobooks. It uses Google Document AI to extract and format text, adding harakat for accurate pronunciation. The text is then transformed into speech with a custom-trained AI voice via Coqui TTS, ensuring a clear and natural listening experience."
+              lgImageUrl={[
+                "https://i.imgur.com/1FiXSEo.png",
+                "https://i.imgur.com/tF5pwfP.png",
+                "https://i.imgur.com/9yQv3ny.png",
+              ]}
+              lgImageAlt="WebUi images"
+              LearnMore="https://github.com/AliAlWahayb/WebUi-Arabic-PDF-OCR-Text-Extraction.git"
+            />
+          </motion.div>
+          <motion.div
+            layout
+            transition={{ duration: childDuration }}
+            variants={variants}
+            initial="initial"
+            whileInView="whileInView"
+            viewport={{ once: true }}
+            className="lg:col-span-1"
+          >
+            <CardCube
+              title="Portfolio-Website V1"
+              description="The initial version of my portfolio website, built with vanilla HTML, CSS, and JavaScript, was developed as part of my Web-Based Systems class."
+              imageUrl="assets/logo.svg"
+              imageAlt="Portfolio-Website V1"
+              className="lg:col-span-1"
+              css="md:rounded-xl md:rounded-tr-4xl"
+              lgTitle="Portfolio-Website V1"
+              lgDescription="The initial version of my portfolio website was built using vanilla HTML, CSS, and JavaScript as part of my Web-Based Systems class. The website showcases my skills and projects, providing a clean and simple layout while focusing on responsive design and user experience. It marks the beginning of my journey in web development and serves as a foundation for future projects."
+              lgImageUrl="https://i.imgur.com/z3lNVi8.png"
+              lgImageAlt="Portfolio-Website V1"
+            />
+          </motion.div>
+          <motion.div
+            layout
+            transition={{ duration: childDuration }}
+            variants={variants}
+            initial="initial"
+            whileInView="whileInView"
+            viewport={{ once: true }}
+            className="lg:col-span-1"
+          >
+            <CardCube
               title="Heat Stroke Alert"
               description="designed to monitor real-time weather conditions, providing alerts when the temperature reaches dangerous levels that could lead to heatstroke."
-              imageUrl="https://camo.githubusercontent.com/2c6d7de0fb93365f29cad9ddd9c6ca9e1855f0fd5720027cb076d7fd03562843/68747470733a2f2f692e696d6775722e636f6d2f3169444c6174372e706e67"
-              className="lg:row-span-2"
+              imageUrl="https://i.imgur.com/Mpwp6Gb.png"
+              className="lg:col-span-1"
               css="rounded-t-4xl md:rounded-xl md:rounded-tl-4xl"
               lgTitle="Heat Stroke Alert"
               lgDescription="The HeatStroke Alert app is designed to monitor real-time weather conditions, providing alerts when the temperature reaches dangerous levels that could lead to heatstroke. This application aims to help users stay safe by notifying them of extreme heat conditions in their location, enabling proactive steps to avoid heat-related illnesses. The app is developed as part of the mobile development course at IAU CCIT, Semester 8."
               lgImageUrl={[
-                "https://camo.githubusercontent.com/2c6d7de0fb93365f29cad9ddd9c6ca9e1855f0fd5720027cb076d7fd03562843/68747470733a2f2f692e696d6775722e636f6d2f3169444c6174372e706e67",
-                "https://camo.githubusercontent.com/e4ac671f7defcca137f5063d3c6afb2418d9cf2ea5bf411218364c9676028ff9/68747470733a2f2f692e696d6775722e636f6d2f654f513662396e2e706e67",
-                "https://camo.githubusercontent.com/e019f85776996f48cab6b7cd2e01bb62b298aca8e74560209fae2a04a6abe8c3/68747470733a2f2f692e696d6775722e636f6d2f5a526d42466f782e706e67", ]}
+                "https://i.imgur.com/eIurPJK.png",
+                "https://i.imgur.com/G2JWH85.png",
+                "https://i.imgur.com/A1aUj5w.png",
+              ]}
               lgImageAlt="Heat Stroke Alert photo"
               LearnMore="https://github.com/AliAlWahayb/HeatStrokeAlertApp3.git"
             />
@@ -63,59 +109,17 @@ export default function Projects() {
             className="lg:col-span-1"
           >
             <CardCube
-              title="Fast & Secure"
-              description="Optimize your deployments..."
-              imageUrl="https://tailwindui.com/plus/img/component-images/bento-03-performance.png"
-              imageAlt="Fast & Secure"
+              title="FastAutoClicker"
+              description="FastAutoClicker is an open-source auto clicker tool that allows users to automate clicking actions on their computer."
+              imageUrl="https://i.imgur.com/eBUpv4l.png"
+              imageAlt="FastAutoClicker"
               className="lg:col-span-1"
               css=""
-              lgTitle="large Fast & Secure"
-              lgDescription="large Optimize your deployments..."
-              lgImageUrl="https://images.unsplash.com/photo-1511485977113-f34c92461ad9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
-              lgImageAlt="Fast & Secure"
-            />
-          </motion.div>
-          <motion.div
-            layout
-            transition={{ duration: childDuration }}
-            variants={variants}
-            initial="initial"
-            whileInView="whileInView"
-            viewport={{ once: true }}
-            className="lg:col-span-1"
-          >
-            <CardCube
-              title="Fast & Secure"
-              description="Optimize your deployments..."
-              imageUrl="https://tailwindui.com/plus/img/component-images/bento-03-performance.png"
-              imageAlt="Fast & Secure"
-              className="lg:col-span-1"
-              css="md:rounded-xl md:rounded-tr-4xl"
-              lgTitle="large Fast & Secure"
-              lgDescription="large Optimize your deployments..."
-              lgImageUrl="https://images.unsplash.com/photo-1511485977113-f34c92461ad9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
-              lgImageAlt="Fast & Secure"
-            />
-          </motion.div>
-          <motion.div
-            layout
-            transition={{ duration: childDuration }}
-            variants={variants}
-            initial="initial"
-            whileInView="whileInView"
-            viewport={{ once: true }}
-            className="lg:col-span-2"
-          >
-            <CardCol
-              title="All-in-One Solution"
-              description="Integrate seamlessly..."
-              imageUrl="https://tailwindui.com/plus/img/component-images/bento-03-performance.png"
-              className="lg:col-span-2"
-              css=""
-              lgTitle="large Fast & Secure"
-              lgDescription="large Optimize your deployments..."
-              lgImageUrl="https://images.unsplash.com/photo-1511485977113-f34c92461ad9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
-              lgImageAlt="Fast & Secure"
+              lgTitle="FastAutoClicker"
+              lgDescription="FastAutoClicker is an open-source auto clicker tool that allows users to automate clicking actions on their computer."
+              lgImageUrl="https://i.imgur.com/usaytBf.png"
+              lgImageAlt="FastAutoClicker"
+              LearnMore="https://github.com/AliAlWahayb/FastAutoClicker.git"
             />
           </motion.div>
           
@@ -126,44 +130,21 @@ export default function Projects() {
             initial="initial"
             whileInView="whileInView"
             viewport={{ once: true }}
-            className="lg:col-span-2"
-          >
-            <CardCol
-              title="All-in-One Solution"
-              description="Integrate seamlessly..."
-              imageUrl="https://tailwindui.com/plus/img/component-images/bento-03-performance.png"
-              className="lg:col-span-2"
-              css=" md:rounded-xl md:rounded-bl-4xl"
-              lgTitle="large Fast & Secure"
-              lgDescription="large Optimize your deployments..."
-              lgImageUrl="https://images.unsplash.com/photo-1511485977113-f34c92461ad9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
-              lgImageAlt="Fast & Secure"
-            />
-          </motion.div>
-          <motion.div
-            layout
-            transition={{ duration: childDuration }}
-            variants={variants}
-            initial="initial"
-            whileInView="whileInView"
-            viewport={{ once: true }}
             className="lg:col-span-1"
           >
             <CardCube
-              title="Fast & Secure"
-              description="Optimize your deployments..."
-              imageUrl="https://tailwindui.com/plus/img/component-images/bento-03-performance.png"
-              imageAlt="Fast & Secure"
+              title="Telegram Bot for Automating Product Posts"
+              description="The Telegram bot I developed automates product posts on platforms like Salla and Instagram using the n8n platform, marking my first freelance job."
+              imageUrl="https://www.svgrepo.com/show/452115/telegram.svg"
+              imageAlt="Product Posts"
               className="lg:col-span-1"
               css="rounded-b-4xl md:rounded-xl md:rounded-br-4xl"
-              lgTitle="large Fast & Secure"
-              lgDescription="large Optimize your deployments..."
-              lgImageUrl="https://images.unsplash.com/photo-1511485977113-f34c92461ad9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
-              lgImageAlt="Fast & Secure"
+              lgTitle="Telegram Bot for Automating Product Posts"
+              lgDescription="The Telegram bot I created uses the n8n platform to automate product posts on platforms such as Salla and Instagram, marking my first freelance job. This tool helps streamline operations and save time."
+              lgImageUrl="https://i.imgur.com/cuYuQsH.png"
+              lgImageAlt="Demo"
             />
           </motion.div>
-
-          
         </motion.div>
       </div>
     </div>

@@ -46,7 +46,7 @@ function CardRow(props: any) {
               onClick={() => setIsExpanded(true)}
               className="w-fit self-center my-4"
             >
-              <CoolBtn text="Learn More" />
+              <CoolBtn text="Learn More" className="bg-card-900" />
             </a>
           </div>
         ) : (

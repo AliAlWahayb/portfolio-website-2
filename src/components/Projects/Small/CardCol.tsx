@@ -8,7 +8,7 @@ function CardCol(props: any) {
   const [isExpanded, setIsExpanded] = useState(false);
 
   return (
-    <div className="relative lg:col-span-2">
+    <div className="relative lg:col-span-2 h-full">
       {/* Wrapper to maintain layout space */}
       <motion.div
         layout
@@ -16,7 +16,7 @@ function CardCol(props: any) {
         className={` ${
           isExpanded
             ? "fixed inset-0 w-full h-screen z-50 scale-90"
-            : "relative lg:col-span-2"
+            : "relative lg:col-span-2 h-full"
         }`}
       >
         <div
@@ -44,7 +44,7 @@ function CardCol(props: any) {
               onClick={() => setIsExpanded(true)}
               className="w-fit self-center my-4"
             >
-              <CoolBtn text="Learn More" />
+              <CoolBtn text="Learn More" className="bg-card-900" />
             </a>
           </div>
         ) : (
