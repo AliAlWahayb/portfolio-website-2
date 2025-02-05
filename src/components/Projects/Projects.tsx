@@ -12,10 +12,10 @@ export default function Projects() {
     <div className="py-24 sm:py-32 relative">
       <div className="mx-auto max-w-2xl px-6 lg:max-w-7xl lg:px-8">
         <h2 className="text-center text-base/7 font-semibold text-text-base">
-          Deploy faster
+          Projects
         </h2>
         <p className="mx-auto mt-2 max-w-lg text-center text-4xl font-semibold tracking-tight text-balance text-secondary-text-base sm:text-5xl">
-          Everything you need to deploy your app
+          Things I’ve Created
         </p>
 
         {/* Grid Container */}
@@ -24,7 +24,7 @@ export default function Projects() {
           whileInView="whileInView"
           transition={{ staggerChildren: 0.1 }}
           viewport={{ once: true }}
-          className="mt-10 grid gap-4 sm:mt-16 lg:grid-cols-3 lg:grid-rows-3 relative "
+          className="mt-10 grid gap-4 sm:mt-16 lg:grid-cols-3 lg:grid-rows-2 relative "
         >
           <motion.div
             layout
@@ -122,7 +122,7 @@ export default function Projects() {
               LearnMore="https://github.com/AliAlWahayb/FastAutoClicker.git"
             />
           </motion.div>
-          
+
           <motion.div
             layout
             transition={{ duration: childDuration }}
