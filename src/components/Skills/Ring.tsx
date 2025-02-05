@@ -3,11 +3,11 @@ import { Tooltip } from "react-tooltip";
 
 
 const buttonData = [
-  { name: "React", svg: "/src/assets/logos/TechStack/react-2.svg" },
-  { name: "Docker", svg: "/src/assets/logos/TechStack/docker-4.svg" },
-  { name: "Firebase", svg: "/src/assets/logos/TechStack/firebase-1.svg" },
-  { name: "FastAPI", svg: "/src/assets/logos/TechStack/fastapi-1.svg" },
-  { name: "TypeScript", svg: "/src/assets/logos/TechStack/typescript.svg" },
+  { name: "React", svg: "src/assets/logos/TechStack/react-2.svg" },
+  { name: "Docker", svg: "src/assets/logos/TechStack/docker-4.svg" },
+  { name: "Firebase", svg: "src/assets/logos/TechStack/firebase-1.svg" },
+  { name: "FastAPI", svg: "src/assets/logos/TechStack/fastapi-1.svg" },
+  { name: "TypeScript", svg: "src/assets/logos/TechStack/typescript.svg" },
 ];
 
 // Define different radii for desktop and mobile
