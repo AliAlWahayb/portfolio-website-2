@@ -5,7 +5,6 @@ import Skills from "../components/Skills/Skills";
 import Projects from "../components/Projects/Projects";
 import TimeLine from "../components/TimeLine/TimeLine";
 import CustomCursor from "../components/Misc/CustomCursor";
-import Footer from "../components/Misc/Footer";
 import useMouse from "@react-hook/mouse-position";
 
 const Page = memo(() => {
@@ -39,7 +38,7 @@ const Page = memo(() => {
       </div>
       <div className="flex flex-col min-h-screen" id="TimeLine">
         <TimeLine />
-        <Footer/>
+        {/* <Footer/> */}
       </div>
     </div>
   );
