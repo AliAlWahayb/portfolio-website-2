@@ -1,6 +1,5 @@
-import { motion } from "framer-motion";
+import { memo, useState, useEffect, useMemo } from "react";
 import { Tooltip } from "react-tooltip";
-import { useState, useEffect, useMemo } from "react";
 
 const buttonData = [
   { name: "React", svg: "/assets/logos/TechStack/react-2.svg" },
@@ -13,96 +12,75 @@ const buttonData = [
 const RADIUS_DESKTOP = 240;
 const RADIUS_MOBILE = 140;
 
-const Ring = () => {
+const Ring = memo(() => {
   const [radius, setRadius] = useState(RADIUS_DESKTOP);
+  const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
     const handleResize = () => {
       setRadius(window.innerWidth < 640 ? RADIUS_MOBILE : RADIUS_DESKTOP);
     };
     handleResize();
+    
+    const observer = new IntersectionObserver(([entry]) => {
+      if(entry.isIntersecting) setIsVisible(true);
+    }, { threshold: 0.1 });
+
+    const container = document.querySelector('#ring-container');
+    if(container) observer.observe(container);
+
     window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+      observer.disconnect();
+    };
   }, []);
 
-  const buttons = useMemo(() => {
-    return buttonData.map((button, index) => {
-      const angle = (2 * Math.PI * index) / buttonData.length;
-      const x = Math.cos(angle) * radius;
-      const y = Math.sin(angle) * radius;
+  const buttons = useMemo(() => buttonData.map((button, index) => {
+    const angle = (2 * Math.PI * index) / buttonData.length;
+    const x = Math.cos(angle) * radius;
+    const y = Math.sin(angle) * radius;
 
-      return (
-        <button
-          data-tooltip-id="SkillTooltip"
-          data-tooltip-content={
-            button.name.charAt(0).toUpperCase() + button.name.slice(1)
-          }
-          data-tooltip-place="top"
-          key={button.name}
-          className="absolute rounded-full bg-cover cursor-default 
-                    border border-gray-400/50 p-0.5 transition-all duration-500"
-          style={{
-            transform: `translate(${x}px, ${y}px)`,
-          }}
-        >
-          <motion.span
-            animate={{ rotate: -360 }}
-            transition={{
-              duration: 50,
-              repeat: Infinity,
-              ease: "linear",
-            }}
-            className="block size-14 sm:size-18 transition-transform 
-                       duration-50 rounded-full z-2 bg-card-base p-1"
-          >
-            <img
-              src={button.svg}
-              alt={button.name}
-              className="size-12 md:size-16 object-contain select-none"
-              draggable="false"
-            />
-          </motion.span>
-        </button>
-      );
-    });
-  }, [radius]);
+    return (
+      <button
+        key={button.name}
+        data-tooltip-id="SkillTooltip"
+        data-tooltip-content={button.name}
+        className="absolute rounded-full bg-cover cursor-default border border-gray-400/50 p-0.5 transition-transform duration-500"
+        style={{ transform: `translate(${x}px, ${y}px)` }}
+      >
+        <div className="block size-14 sm:size-18 rounded-full z-2 bg-card-base p-1 animate-[spin-reverse_50s_linear_infinite]">
+          <img
+            src={button.svg}
+            alt={button.name}
+            className="size-12 md:size-16 object-contain select-none"
+            draggable="false"
+            loading="lazy"
+          />
+        </div>
+      </button>
+    );
+  }), [radius]);
 
   return (
-    <div className="relative flex items-center justify-center h-screen w-screen overflow-hidden">
-      <div className="relative z-10 flex items-center justify-center">
-        <motion.div
-          animate={{ rotate: 360 }}
-          transition={{
-            duration: 50,
-            repeat: Infinity,
-            ease: "linear",
-          }}
-          className="relative flex items-center justify-center 
-                    size-70 sm:size-[240px] md:size-120 p-4 
-                    border-2 border-dashed rounded-full border-gray-400/50"
-        >
-          {buttons}
-          <div className="absolute size-16 sm:size-24 bg-transparent" />
-        </motion.div>
-      </div>
+    <div id="ring-container" className="relative flex items-center justify-center h-screen w-screen overflow-hidden">
+      {isVisible && (
+        <div className="relative z-10 flex items-center justify-center">
+          <div className="relative flex items-center justify-center size-70 sm:size-[240px] md:size-120 p-4 border-2 border-dashed rounded-full border-gray-400/50 animate-spin-slow">
+            {buttons}
+            <div className="absolute size-16 sm:size-24 bg-transparent" />
+          </div>
+        </div>
+      )}
       <Tooltip
         id="SkillTooltip"
         offset={5}
         variant="light"
         place="top"
-        delayShow={250}
-        delayHide={250}
-        noArrow={true}
-        style={{
-          background: "#fff",
-          color: "#364153",
-          fontWeight: "bold",
-          borderRadius: "8px",
-          zIndex: "9999",
-        }}
+        className="!bg-white !text-[#364153] !font-bold !rounded-lg !z-[9999]"
       />
     </div>
   );
-};
+});
 
 export default Ring;

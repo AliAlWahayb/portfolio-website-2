@@ -1,21 +1,24 @@
+import { useRef, useCallback, memo } from "react";
 import HeaderBar from "../components/Header/HeaderBar";
 import Hero from "../components/Hero/Hero";
 import Skills from "../components/Skills/Skills";
 import Projects from "../components/Projects/Projects";
 import TimeLine from "../components/TimeLine/TimeLine";
-import React from "react";
-import useMouse from "@react-hook/mouse-position";
 import CustomCursor from "../components/Misc/CustomCursor";
 import Footer from "../components/Misc/Footer";
+import useMouse from "@react-hook/mouse-position";
 
-
-// Page Component
-const Page: React.FC = () => {
-  const ref = React.useRef(null)
+const Page = memo(() => {
+  const ref = useRef<HTMLDivElement>(null);
   const mouse = useMouse(ref, {
     enterDelay: 100,
     leaveDelay: 100,
-  })
+    fps: 30
+  });
+
+  const MemoizedCursor = useCallback(() => (
+    <CustomCursor x={mouse.x ?? 0} y={mouse.y ?? 0} />
+  ), [mouse.x, mouse.y]);
 
   return (
     <div
@@ -23,7 +26,7 @@ const Page: React.FC = () => {
       className="bg-background-base overflow-hidden cursor-follow relative"
       id="rootPage"
     >
-      {(mouse.x || mouse.y) && <CustomCursor x={mouse.x ?? 0} y={mouse.y ?? 0} />}
+      {(mouse.x && mouse.y) && <MemoizedCursor />}
       <HeaderBar />
       <div className="min-h-screen" id="Hero">
         <Hero />
@@ -40,6 +43,6 @@ const Page: React.FC = () => {
       </div>
     </div>
   );
-};
+});
 
 export default Page;

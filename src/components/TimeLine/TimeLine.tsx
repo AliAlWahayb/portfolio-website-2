@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import { memo } from "react";
 import {
   VerticalTimeline,
   VerticalTimelineElement,
@@ -9,7 +9,6 @@ import { TbBrandCpp } from "react-icons/tb";
 import { FaJava, FaPython } from "react-icons/fa";
 import { DiProlog } from "react-icons/di";
 
-// Style constants
 const contentStyle = { 
   background: "#2d2d2d", 
   boxShadow: "0 3px 0 #d1d1d6" 
@@ -73,44 +72,36 @@ const timelineEvents = [
   }
 ];
 
-const TimelineComponent: React.FC = React.memo(() => {
-  const memoizedEvents = useMemo(() => timelineEvents, []);
-
-  return (
-    <VerticalTimeline lineColor="#646cff">
-      {memoizedEvents.map(event => (
-        <VerticalTimelineElement
-          key={event.id}
-          className="vertical-timeline-element--work"
-          contentStyle={contentStyle}
-          textClassName="text-white"
-          contentArrowStyle={arrowStyle}
-          date={event.year}
-          iconStyle={iconStyle}
-          icon={<event.Icon />}
-          iconClassName="text-primary-base"
-        >
-          <h3 className="vertical-timeline-element-title pb-3 flex gap-3 text-primary-base">
-            {event.skills.map((skill, index) => (
-              <span 
-                key={`${event.id}-${index}`}
-                className="bg-card-100 inline-block px-2 py-1 rounded-lg elevation-5"
-              >
-                {skill}
-              </span>
-            ))}
-          </h3>
-          <h4 className="vertical-timeline-element-subtitle text-text-base">
-            {event.title}
-          </h4>
-          <p 
-            className="text-secondary-text-base"
-            dangerouslySetInnerHTML={{ __html: event.content }}
-          />
-        </VerticalTimelineElement>
-      ))}
-    </VerticalTimeline>
-  );
-});
+const TimelineComponent = memo(() => (
+  <VerticalTimeline lineColor="#646cff">
+    {timelineEvents.map((event) => (
+      <VerticalTimelineElement
+        key={event.id}
+        className="vertical-timeline-element--work"
+        contentStyle={contentStyle}
+        textClassName="text-white"
+        contentArrowStyle={arrowStyle}
+        date={event.year}
+        iconStyle={iconStyle}
+        icon={<event.Icon className="text-primary-base" />}
+      >
+        <h3 className="vertical-timeline-element-title pb-3 flex gap-3 text-primary-base">
+          {event.skills.map((skill) => (
+            <span 
+              key={`${event.id}-${skill}`}
+              className="bg-card-100 inline-block px-2 py-1 rounded-lg elevation-5"
+            >
+              {skill}
+            </span>
+          ))}
+        </h3>
+        <h4 className="vertical-timeline-element-subtitle text-text-base">
+          {event.title}
+        </h4>
+        <div className="text-secondary-text-base" dangerouslySetInnerHTML={{ __html: event.content }} />
+      </VerticalTimelineElement>
+    ))}
+  </VerticalTimeline>
+));
 
 export default TimelineComponent;

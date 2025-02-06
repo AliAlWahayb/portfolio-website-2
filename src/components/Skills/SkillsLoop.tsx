@@ -1,7 +1,7 @@
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import Card from "./Small/Card";
 import { Tooltip } from "react-tooltip";
-import { useMemo } from "react";
+import { memo, useMemo } from "react";
 
 // Static data and functions moved outside component
 const cards = [
@@ -20,20 +20,14 @@ const cards = [
   { name: "javascript", svg: "/assets/logos/logo-javascript.svg" },
 ];
 
-const shuffleArray = <T,>(array: T[]): T[] => {
-  return [...array].sort(() => Math.random() - 0.5);
-};
 
-const getRandomNumber = (min: number, max: number): number => {
-  return Math.random() * (max - min) + min;
-};
-
-const StaggeredRowCards: React.FC = () => {
+const StaggeredRowCards = memo(() => {
+  const shouldReduceMotion = useReducedMotion();
   const shuffledCards = useMemo(() => {
-    const shuffled = shuffleArray(cards);
-    return shuffled.map((card) => ({
+    const shuffled = [...cards].sort(() => Math.random() - 0.5);
+    return shuffled.map(card => ({
       ...card,
-      duration: getRandomNumber(7, 10),
+      duration: Math.random() * 3 + 7
     }));
   }, []);
 
@@ -41,7 +35,6 @@ const StaggeredRowCards: React.FC = () => {
     <motion.div
       initial="initial"
       whileInView="whileInView"
-      transition={{ staggerChildren: 0.1 }}
       viewport={{ once: true, margin: "100px" }}
       className="flex flex-wrap justify-center items-center gap-1 md:gap-4 w-3/4 mx-auto"
     >
@@ -49,41 +42,25 @@ const StaggeredRowCards: React.FC = () => {
         <motion.div
           key={card.name}
           variants={{
-            initial: {
-              y: 100,
-              opacity: 0,
-              scale: 0.8,
-            },
-            whileInView: {
-              y: 0,
-              opacity: 1,
+            initial: shouldReduceMotion ? {} : { y: 100, opacity: 0, scale: 0.8 },
+            whileInView: { 
+              y: 0, 
+              opacity: 1, 
               scale: 1,
               transition: {
-                type: "spring",
-                stiffness: 50,
-                damping: 10,
-                when: "beforeChildren",
-              },
-            },
+                type: "tween",
+                duration: 0.4,
+                ease: "easeOut"
+              }
+            }
           }}
           className="w-20 h-20"
           data-tooltip-id="SkillLoopTooltip"
           data-tooltip-content={card.name}
         >
-          <motion.div
-            initial={{ translateY: -10 }}
-            animate={{ translateY: 10 }}
-            transition={{
-              repeat: Infinity,
-              repeatType: "reverse",
-              ease: "easeInOut",
-              duration: card.duration,
-              delay: 3,
-            }}
-            style={{ willChange: "transform" }}
-          >
+          <div className="animate-float">
             <Card svg={card.svg} alt={card.name} />
-          </motion.div>
+          </div>
         </motion.div>
       ))}
       <Tooltip
@@ -94,15 +71,10 @@ const StaggeredRowCards: React.FC = () => {
         delayShow={250}
         delayHide={250}
         noArrow
-        style={{
-          background: "#fff",
-          color: "#364153",
-          fontWeight: "bold",
-          borderRadius: "8px",
-        }}
+        className="!bg-white !text-[#364153] !font-bold !rounded-lg"
       />
     </motion.div>
   );
-};
+});
 
 export default StaggeredRowCards;

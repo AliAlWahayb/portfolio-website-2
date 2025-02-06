@@ -120,3 +120,30 @@
   .hover\:text-shadow-glow:hover {
     text-shadow: 0 0 12px rgba(255,255,255,0.9);
   }
+
+  @keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+  
+  @keyframes spin-reverse {
+    from { transform: rotate(360deg); }
+    to { transform: rotate(0deg); }
+  }
+  
+  @keyframes float {
+    0%, 100% { transform: translateY(-5%); }
+    50% { transform: translateY(5%); }
+  }
+  
+  .animate-spin-slow {
+    animation: spin 50s linear infinite;
+  }
+  
+  .animate-spin-reverse {
+    animation: spin-reverse 50s linear infinite;
+  }
+  
+  .animate-float {
+    animation: float 5s ease-in-out infinite;
+  }
