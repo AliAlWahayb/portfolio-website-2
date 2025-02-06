@@ -42,5 +42,6 @@ const BgLight: React.FC = () => {
     </div>
   );
 };
+{/* drop */}
 
 export default BgLight;
