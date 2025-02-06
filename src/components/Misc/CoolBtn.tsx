@@ -3,6 +3,7 @@ import { memo } from 'react';
 interface CoolBtnProps {
   text: string;
   className?: string;
+  onClick?: () => void; 
 }
 
 const CoolBtn = memo(({ text, className }: CoolBtnProps) => (

@@ -55,7 +55,7 @@ const CardCol = memo(function CardCol(props: CardColProps) {
               <CoolBtn
                 text="Learn More"
                 className="bg-card-900"
-                onClick={toggleExpansion}
+                onClick={ toggleExpansion}
               />
             </div>
           </div>
