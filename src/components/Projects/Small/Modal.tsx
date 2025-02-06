@@ -22,59 +22,62 @@ const Modal = memo(function Modal(props: ModalProps) {
     };
   }, []);
 
-  // Memoize image grid rendering
+  // Memoize image grid rendering if images are array
   const imageGrid = useMemo(() => {
-    if (!Array.isArray(props.lgImageUrl)) return null;
-    
-    return props.lgImageUrl.map((image, index) => (
-      <div 
-        key={`img-${image}-${index}`}
-        className="relative group overflow-hidden"
-      >
-        <img // Switch to next/image if using Next.js
-          src={image}
-          alt={props.lgImageAlt?.[index] || `Project image ${index + 1}`}
-          width={600}
-          height={400}
-          loading="lazy"
-          className="w-full h-auto object-contain md:aspect-square"
-        />
-      </div>
-    ));
+    if (Array.isArray(props.lgImageUrl)) {
+      return props.lgImageUrl.map((image, index) => (
+        <div 
+          key={`img-${image}-${index}`}
+          className="relative group overflow-hidden"
+        >
+          <img
+            src={image}
+            alt={props.lgImageAlt?.[index] || `Project image ${index + 1}`}
+            width={600}
+            height={400}
+            loading="lazy"
+            className="w-full h-auto object-contain md:aspect-square"
+          />
+        </div>
+      ));
+    }
+    return null;
   }, [props.lgImageUrl, props.lgImageAlt]);
 
-  // Single image render
+  // Single image render if not array
   const mainImage = useMemo(() => {
-    if (Array.isArray(props.lgImageUrl)) return null;
-    
-    return (
-      <div className="max-w-4xl mx-auto rounded-2xl p-4 md:p-6">
-        <img // Switch to next/image if using Next.js
-          src={props.lgImageUrl}
-          alt={props.lgImageAlt?.toString() || "Project main image"}
-          width={1200}
-          height={800}
-          loading="lazy"
-          className="w-full h-auto object-contain rounded-lg"
-        />
-      </div>
-    );
+    if (!Array.isArray(props.lgImageUrl)) {
+      return (
+        <div className="max-w-4xl mx-auto rounded-2xl p-4 md:p-6">
+          <img
+            src={props.lgImageUrl}
+            alt={props.lgImageAlt?.toString() || "Project main image"}
+            width={1200}
+            height={800}
+            loading="lazy"
+            className="w-full h-auto object-contain rounded-lg"
+          />
+        </div>
+      );
+    }
+    return null;
   }, [props.lgImageUrl, props.lgImageAlt]);
 
   // Memoize learn more button
   const learnMoreButton = useMemo(() => {
-    if (!props.LearnMore) return null;
-    
-    return (
-      <a
-        href={props.LearnMore}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="flex justify-center my-5 cursor-pointer"
-      >
-        <CoolBtn text="Learn More" className="scale-150" />
-      </a>
-    );
+    if (props.LearnMore) {
+      return (
+        <a
+          href={props.LearnMore}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex justify-center my-5 cursor-pointer"
+        >
+          <CoolBtn text="Learn More" className="scale-150" />
+        </a>
+      );
+    }
+    return null;
   }, [props.LearnMore]);
 
   return (

@@ -1,4 +1,4 @@
-import { memo, useCallback, useState } from "react";
+import { memo, useState, useCallback } from "react";
 import { motion } from "framer-motion";
 import CoolBtn from "../../Misc/CoolBtn";
 import Modal from "./Modal";
@@ -29,9 +29,7 @@ const CardCol = memo(function CardCol(props: CardColProps) {
         transition={{ duration: 0.3, type: "spring" }}
         className="relative lg:col-span-2 h-full"
       >
-        <div
-          className={`absolute inset-px bg-card-base rounded-xl ${props.css}`}
-        />
+        <div className={`absolute inset-px bg-card-base rounded-xl ${props.css}`} />
 
         {!isExpanded ? (
           <div className="relative flex h-full flex-col overflow-hidden rounded-[calc(var(--radius-lg)+1px)] lg:rounded-t-[calc(2rem+1px)]">
@@ -55,11 +53,12 @@ const CardCol = memo(function CardCol(props: CardColProps) {
               <CoolBtn
                 text="Learn More"
                 className="bg-card-900"
-                onClick={ toggleExpansion}
+                onClick={toggleExpansion}
               />
             </div>
           </div>
         ) : (
+          // Only render the Modal when expanded
           <Modal
             key="modal"
             onClose={toggleExpansion}

@@ -3,10 +3,13 @@ import { motion } from 'framer-motion';
 
 const Footer = memo(() => {
   const handleScroll = useCallback((id: string) => {
-    document.getElementById(id)?.scrollIntoView({ 
-      behavior: 'smooth',
-      block: 'start'
-    });
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }
   }, []);
 
   return (

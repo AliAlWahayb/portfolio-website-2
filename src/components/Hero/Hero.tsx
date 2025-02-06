@@ -41,10 +41,7 @@ const Hero: React.FC = React.memo(() => {
       <div
         data-tooltip-id="DragTooltip"
         data-tooltip-hidden={isDragging}
-        className={`cursor-pointer ${
-          isDragging ? "transition-transform duration-200 ease-out" 
-                   : "transition-transform duration-5000 ease-in-out"
-        }`}
+        className={`cursor-pointer ${isDragging ? "transition-transform duration-200 ease-out" : "transition-transform duration-5000 ease-in-out"}`}
       >
         {content}
       </div>
@@ -75,13 +72,7 @@ const Hero: React.FC = React.memo(() => {
 
   const TertiaryTyped = useMemo(() => (
     <ReactTyped
-      strings={[
-        " Web development.",
-        " Self-hosting ",
-        " Text to Speech ",
-        " Apps development ",
-        " Machine learning ",
-      ]}
+      strings={[" Web development.", " Self-hosting ", " Text to Speech ", " Apps development ", " Machine learning "]}
       typeSpeed={40}
       backSpeed={40}
       loop

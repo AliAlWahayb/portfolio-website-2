@@ -1,4 +1,4 @@
-import { memo, useEffect, useRef } from 'react';
+import { memo, useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 
 interface CustomCursorProps {
@@ -7,23 +7,31 @@ interface CustomCursorProps {
 }
 
 const CustomCursor = memo(({ x, y }: CustomCursorProps) => {
-  const prevPos = useRef({ x: 0, y: 0 });
-  const updateInterval = useRef<NodeJS.Timeout>();
+  const [cursorPos, setCursorPos] = useState({ x: 0, y: 0 });
 
   useEffect(() => {
+    // Use requestAnimationFrame to update cursor position efficiently
     const updatePosition = () => {
-      prevPos.current = { x, y };
+      setCursorPos({ x, y });
+      requestAnimationFrameId = requestAnimationFrame(updatePosition);
     };
     
-    updateInterval.current = setInterval(updatePosition, 16);
-    return () => clearInterval(updateInterval.current);
+    // Start updating the position with requestAnimationFrame
+    let requestAnimationFrameId = requestAnimationFrame(updatePosition);
+    
+    return () => {
+      // Clean up when the component unmounts
+      cancelAnimationFrame(requestAnimationFrameId);
+    };
+    
+
   }, [x, y]);
 
   return (
     <motion.div
       className="hidden md:block absolute ring ring-secondary-base size-8 rounded-full pointer-events-none z-[500] transform-gpu"
       style={{
-        transform: `translate3d(${prevPos.current.x - 16}px, ${prevPos.current.y - 16}px, 0)`,
+        transform: `translate3d(${cursorPos.x - 16}px, ${cursorPos.y - 16}px, 0)`,
       }}
       transition={{
         type: "spring",

@@ -1,5 +1,5 @@
-import { memo, useMemo } from 'react';
-import { motion } from 'framer-motion';
+import { memo, useMemo } from "react";
+import { motion } from "framer-motion";
 import CardColAudio from "./Small/CardColAudio";
 import CardCube from "./Small/CardCube";
 
@@ -21,6 +21,11 @@ const Projects = () => {
     viewport: { once: true, margin: "100px" }
   }), []);
 
+  const transitionProps = useMemo(() => ({
+    duration: CHILD_DURATION,
+    transition: { duration: CHILD_DURATION }
+  }), []);
+
   return (
     <div className="py-24 sm:py-32 relative">
       <div className="mx-auto max-w-2xl px-6 lg:max-w-7xl lg:px-8">
@@ -40,7 +45,7 @@ const Projects = () => {
           {/* Project 1 */}
           <motion.div
             variants={VARIANTS}
-            transition={{ duration: CHILD_DURATION }}
+            {...transitionProps}
             className="lg:col-span-2"
           >
             <MemoCardColAudio
@@ -63,7 +68,7 @@ const Projects = () => {
           {/* Project 2 */}
           <motion.div
             variants={VARIANTS}
-            transition={{ duration: CHILD_DURATION }}
+            {...transitionProps}
             className="lg:col-span-1"
           >
             <MemoCardCube
@@ -81,7 +86,7 @@ const Projects = () => {
 
           <motion.div
             variants={VARIANTS}
-            transition={{ duration: CHILD_DURATION }}
+            {...transitionProps}
             className="lg:col-span-1"
           >
             <MemoCardCube
@@ -104,7 +109,7 @@ const Projects = () => {
 
           <motion.div
             variants={VARIANTS}
-            transition={{ duration: CHILD_DURATION }}
+            {...transitionProps}
             className="lg:col-span-1"
           >
             <MemoCardCube
@@ -122,7 +127,7 @@ const Projects = () => {
           </motion.div>
           <motion.div
             variants={VARIANTS}
-            transition={{ duration: CHILD_DURATION }}
+            {...transitionProps}
             className="lg:col-span-1"
           >
             <MemoCardCube
@@ -147,4 +152,3 @@ const Projects = () => {
 };
 
 export default memo(Projects);
-

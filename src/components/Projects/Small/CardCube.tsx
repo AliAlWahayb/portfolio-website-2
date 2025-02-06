@@ -1,4 +1,4 @@
-import { memo, useCallback, useState } from "react";
+import { memo, useState, useCallback } from "react";
 import { motion } from "framer-motion";
 import CoolBtn from "../../Misc/CoolBtn";
 import Modal from "./Modal";
@@ -19,8 +19,9 @@ interface CardCubeProps {
 const CardCube = memo(function CardCube(props: CardCubeProps) {
   const [isExpanded, setIsExpanded] = useState(false);
 
+  // Memoizing the toggleExpansion function
   const toggleExpansion = useCallback(() => {
-    setIsExpanded(prev => !prev);
+    setIsExpanded((prev) => !prev);
   }, []);
 
   return (
@@ -30,7 +31,9 @@ const CardCube = memo(function CardCube(props: CardCubeProps) {
         transition={{ duration: 0.3, type: "spring" }}
         className={`relative h-full ${isExpanded ? "z-50" : ""}`}
       >
-        <div className={`absolute inset-px bg-card-base rounded-xl ${props.css}`} />
+        <div
+          className={`absolute inset-px bg-card-base rounded-xl ${props.css}`}
+        />
 
         {!isExpanded ? (
           <div className="relative flex h-full flex-col overflow-hidden">
@@ -42,9 +45,9 @@ const CardCube = memo(function CardCube(props: CardCubeProps) {
                 {props.description}
               </p>
             </div>
-            
+
             <div className="flex flex-1 items-center justify-center px-8 max-lg:py-6 sm:px-10 lg:pb-2">
-              <img // Use Next.js Image if available
+              <img
                 src={props.imageUrl}
                 alt={props.imageAlt || props.title}
                 width={400}
@@ -55,16 +58,17 @@ const CardCube = memo(function CardCube(props: CardCubeProps) {
             </div>
 
             <div className="w-fit self-center my-4">
-              <CoolBtn 
-                text="Learn More" 
+              <CoolBtn
+                text="Learn More"
                 className="bg-card-900"
                 onClick={toggleExpansion}
               />
             </div>
           </div>
         ) : (
+          // Only render Modal when expanded
           <Modal
-            key="modal" // Add key for proper reconciliation
+            key="modal" // This is important for proper reconciliation
             onClose={toggleExpansion}
             lgTitle={props.lgTitle}
             lgDescription={props.lgDescription}

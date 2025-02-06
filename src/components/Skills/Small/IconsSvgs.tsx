@@ -6,23 +6,23 @@ type TechStackProps = {
   icon?: React.ReactNode;
 };
 
-const TechStack: React.FC<TechStackProps> = (props) => {
+const TechStack: React.FC<TechStackProps> = React.memo(({ svg, alt, icon }) => {
   return (
     <div className="">
       {/* Render SVG if provided, else render React Icon */}
-      {props.svg ? (
+      {svg ? (
         <img
-          src={props.svg}
-          alt={props.alt}
+          src={svg}
+          alt={alt}
           className="w-full h-full object-contain select-none"
         />
       ) : (
-        <div className="w-full h-full object-contain select-none ">
-          {props.icon}
+        <div className="w-full h-full object-contain select-none">
+          {icon}
         </div>
       )}
     </div>
   );
-};
+});
 
 export default TechStack;

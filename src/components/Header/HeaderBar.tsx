@@ -1,13 +1,10 @@
-"use client";
-
+import React, { useState, useCallback, useMemo } from "react";
 import { motion } from "framer-motion";
-import { useState, useCallback, useMemo } from "react";
 import { Dialog, DialogPanel } from "@headlessui/react";
 import { HiMiniXMark } from "react-icons/hi2";
 import { FaBars } from "react-icons/fa6";
 import Headroom from "react-headroom";
 import FlipLink from "./Small/FlipLink";
-import React from "react";
 
 const logo = "/assets/logo.svg";
 const links = ["Skills", "Projects", "TimeLine"];
@@ -17,6 +14,7 @@ const MemoFlipLink = React.memo(FlipLink);
 export default function StackedNavbars() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
+  // Memoize handleScroll to avoid re-creating the function on each render
   const handleScroll = useCallback((id: string) => {
     const section = document.getElementById(id);
     section?.scrollIntoView({ behavior: "smooth" });
@@ -33,7 +31,7 @@ export default function StackedNavbars() {
       transition: {
         duration: 2,
         repeat: Infinity,
-        repeatType: "mirror" as const, // Update this line
+        repeatType: "mirror" as const,
         ease: "easeInOut",
       },
     }),
@@ -63,12 +61,9 @@ export default function StackedNavbars() {
           {/* Desktop Left Section */}
           <div className="hidden md:flex space-x-6">
             {links.map((link) => (
-              <FlipLink
-                key={link}
-                onClick={() => handleScroll(link)}
-              >
+              <MemoFlipLink key={link} onClick={() => handleScroll(link)}>
                 {link}
-              </FlipLink>
+              </MemoFlipLink>
             ))}
           </div>
 
@@ -78,12 +73,7 @@ export default function StackedNavbars() {
             className="hidden md:block cursor-pointer"
             onClick={() => handleScroll("Hero")}
           >
-            <img
-              src={logo}
-              alt="logo"
-              className="w-10 "
-              loading="lazy"
-            />
+            <img src={logo} alt="logo" className="w-10 " loading="lazy" />
           </motion.div>
 
           {/* Mobile Menu Button */}
@@ -121,6 +111,7 @@ export default function StackedNavbars() {
             <button
               className="text-white text-2xl hover:drop-shadow-glow"
               aria-label="Close menu"
+              onClick={() => setMobileMenuOpen(false)}
             >
               <HiMiniXMark />
             </button>
@@ -132,7 +123,7 @@ export default function StackedNavbars() {
                 key={link}
                 onClick={() => {
                   handleScroll(link);
-                  setMobileMenuOpen(false);
+                  setMobileMenuOpen(false); // Close the menu after click
                 }}
               >
                 {link}
