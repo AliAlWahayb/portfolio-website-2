@@ -1,5 +1,4 @@
 import { memo, useCallback } from 'react';
-import { motion } from 'framer-motion';
 
 const Footer = memo(() => {
   const handleScroll = useCallback((id: string) => {
@@ -13,11 +12,8 @@ const Footer = memo(() => {
   }, []);
 
   return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      whileInView={{ opacity: 1 }}
-      viewport={{ once: true, margin: "100px" }}
-      transition={{ duration: 0.3 }}
+    <div
+      
       className="relative h-40 flex items-start px-4 md:justify-center"
     >
       <div className="absolute left-7 md:left-1/2 top-0 h-3/4 w-1 bg-primary-base transform md:-translate-x-1/2" />
@@ -33,7 +29,7 @@ const Footer = memo(() => {
           </button>
         </div>
       </div>
-    </motion.div>
+    </div>
   );
 });
 

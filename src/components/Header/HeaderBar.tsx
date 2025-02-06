@@ -1,5 +1,4 @@
-import React, { useState, useCallback, useMemo } from "react";
-import { motion } from "framer-motion";
+import React, { useState, useCallback } from "react";
 import { Dialog, DialogPanel } from "@headlessui/react";
 import { HiMiniXMark } from "react-icons/hi2";
 import { FaBars } from "react-icons/fa6";
@@ -20,23 +19,7 @@ export default function StackedNavbars() {
     section?.scrollIntoView({ behavior: "smooth" });
   }, []);
 
-  const logoAnimation = useMemo(
-    () => ({
-      initial: {
-        filter: "drop-shadow(0 0 0px  rgba(255,255,255,0.5))",
-      },
-      animate: {
-        filter: "drop-shadow(0 0 8px rgba(255,255,255,0.5))",
-      },
-      transition: {
-        duration: 2,
-        repeat: Infinity,
-        repeatType: "mirror" as const,
-        ease: "easeInOut",
-      },
-    }),
-    []
-  );
+  
 
   return (
     <Headroom
@@ -50,13 +33,12 @@ export default function StackedNavbars() {
           <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent opacity-20 animate-pulse" />
 
           {/* Mobile Logo */}
-          <motion.div
-            {...logoAnimation}
+          <div
             className="text-white cursor-pointer md:hidden"
             onClick={() => handleScroll("Hero")}
           >
             <img src={logo} alt="logo" className="w-10" />
-          </motion.div>
+          </div>
 
           {/* Desktop Left Section */}
           <div className="hidden md:flex space-x-6">
@@ -68,13 +50,12 @@ export default function StackedNavbars() {
           </div>
 
           {/* Desktop Center Logo */}
-          <motion.div
-            {...logoAnimation}
+          <div
             className="hidden md:block cursor-pointer"
             onClick={() => handleScroll("Hero")}
           >
             <img src={logo} alt="logo" className="w-10 " loading="lazy" />
-          </motion.div>
+          </div>
 
           {/* Mobile Menu Button */}
           <div className="md:hidden ml-auto z-50">
@@ -100,13 +81,12 @@ export default function StackedNavbars() {
           onClick={() => setMobileMenuOpen(false)}
         >
           <div className="flex justify-between items-center mb-8">
-            <motion.img
+            <img
               src={logo}
               alt="logo"
               className="w-10"
               loading="lazy"
               onClick={() => handleScroll("Hero")}
-              {...logoAnimation}
             />
             <button
               className="text-white text-2xl hover:drop-shadow-glow"

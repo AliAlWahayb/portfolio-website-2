@@ -1,5 +1,4 @@
 import { memo, useState, useCallback } from "react";
-import { motion } from "framer-motion";
 import CoolBtn from "../../Misc/CoolBtn";
 import Modal from "./Modal";
 
@@ -24,9 +23,7 @@ const CardCol = memo(function CardCol(props: CardColProps) {
 
   return (
     <div className="relative lg:col-span-2 h-full">
-      <motion.div
-        layout
-        transition={{ duration: 0.3, type: "spring" }}
+      <div
         className="relative lg:col-span-2 h-full"
       >
         <div className={`absolute inset-px bg-card-base rounded-xl ${props.css}`} />
@@ -69,7 +66,7 @@ const CardCol = memo(function CardCol(props: CardColProps) {
             LearnMore={props.LearnMore}
           />
         )}
-      </motion.div>
+      </div>
     </div>
   );
 });

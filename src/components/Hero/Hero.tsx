@@ -8,7 +8,6 @@ import { ReactTyped } from "react-typed";
 import Draggable from "react-draggable";
 import { Tooltip } from "react-tooltip";
 import CoolBtn from "../Misc/CoolBtn";
-import { motion } from "framer-motion";
 
 // State reducer for typed completion tracking
 const typedReducer = (state: number, action: 'SECOND' | 'THIRD') => {
@@ -97,10 +96,8 @@ const Hero: React.FC = React.memo(() => {
             </div>
           </div>
           
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: typedState >= 2 ? 1 : 0 }}
-            transition={{ delay: 0.5, duration: 0.5 }}
+          <div
+            
             className="mt-10 flex items-center justify-center gap-x-6"
           >
             <SvgIcon
@@ -118,12 +115,10 @@ const Hero: React.FC = React.memo(() => {
               link="https://www.linkedin.com/in/alialwahayb"
               icon={<TfiLinkedin className="size-8" />}
             />
-          </motion.div>
+          </div>
 
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: typedState >= 2 ? 1 : 0 }}
-            transition={{ delay: 1, duration: 0.5 }}
+          <div
+            
             className="flex items-center justify-center mx-auto max-w-2xl sm:mt-16"
           >
             <a
@@ -134,7 +129,7 @@ const Hero: React.FC = React.memo(() => {
             >
               <CoolBtn text="Open CV" className="bg-card-900" />
             </a>
-          </motion.div>
+          </div>
         </div>
       </div>
       <BgLight />

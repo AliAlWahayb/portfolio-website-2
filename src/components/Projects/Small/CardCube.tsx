@@ -1,5 +1,4 @@
 import { memo, useState, useCallback } from "react";
-import { motion } from "framer-motion";
 import CoolBtn from "../../Misc/CoolBtn";
 import Modal from "./Modal";
 
@@ -26,9 +25,7 @@ const CardCube = memo(function CardCube(props: CardCubeProps) {
 
   return (
     <div className="relative h-full">
-      <motion.div
-        layout
-        transition={{ duration: 0.3, type: "spring" }}
+      <div
         className={`relative h-full ${isExpanded ? "z-50" : ""}`}
       >
         <div
@@ -77,7 +74,7 @@ const CardCube = memo(function CardCube(props: CardCubeProps) {
             LearnMore={props.LearnMore}
           />
         )}
-      </motion.div>
+      </div>
     </div>
   );
 });

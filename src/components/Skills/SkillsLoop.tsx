@@ -1,4 +1,3 @@
-import { motion, useReducedMotion } from "framer-motion";
 import Card from "./Small/Card";
 import { Tooltip } from "react-tooltip";
 import { memo, useMemo } from "react";
@@ -15,45 +14,23 @@ const cards = [
   { name: "Figma", svg: "/assets/logos/figma-icon.svg" },
   { name: "Git", svg: "/assets/logos/git-bash.svg" },
   { name: "Bootstrap", svg: "/assets/logos/bootstrap-5-1.svg" },
-  { name: "Framer-Motion", svg: "/assets/logos/framer-motion.svg" },
   { name: "Tailwind", svg: "/assets/logos/tailwind-css-1.svg" },
   { name: "javascript", svg: "/assets/logos/logo-javascript.svg" },
 ];
 
-
 const StaggeredRowCards = memo(() => {
-  const shouldReduceMotion = useReducedMotion();
   const shuffledCards = useMemo(() => {
     const shuffled = [...cards].sort(() => Math.random() - 0.5);
-    return shuffled.map(card => ({
+    return shuffled.map((card) => ({
       ...card,
-      duration: Math.random() * 3 + 7
     }));
   }, []);
 
   return (
-    <motion.div
-      initial="initial"
-      whileInView="whileInView"
-      viewport={{ once: true, margin: "100px" }}
-      className="flex flex-wrap justify-center items-center gap-1 md:gap-4 w-3/4 mx-auto"
-    >
+    <div className="flex flex-wrap justify-center items-center gap-1 md:gap-4 w-3/4 mx-auto">
       {shuffledCards.map((card) => (
-        <motion.div
+        <div
           key={card.name}
-          variants={{
-            initial: shouldReduceMotion ? {} : { y: 100, opacity: 0, scale: 0.8 },
-            whileInView: { 
-              y: 0, 
-              opacity: 1, 
-              scale: 1,
-              transition: {
-                type: "tween",
-                duration: 0.4,
-                ease: "easeOut"
-              }
-            }
-          }}
           className="w-20 h-20"
           data-tooltip-id="SkillLoopTooltip"
           data-tooltip-content={card.name}
@@ -61,7 +38,7 @@ const StaggeredRowCards = memo(() => {
           <div className="animate-float">
             <Card svg={card.svg} alt={card.name} />
           </div>
-        </motion.div>
+        </div>
       ))}
       <Tooltip
         id="SkillLoopTooltip"
@@ -73,7 +50,7 @@ const StaggeredRowCards = memo(() => {
         noArrow
         className="!bg-white !text-[#364153] !font-bold !rounded-lg"
       />
-    </motion.div>
+    </div>
   );
 });
 

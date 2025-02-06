@@ -1,5 +1,4 @@
-import { memo, useMemo } from "react";
-import { motion } from "framer-motion";
+import { memo } from "react";
 import CardColAudio from "./Small/CardColAudio";
 import CardCube from "./Small/CardCube";
 
@@ -7,24 +6,10 @@ import CardCube from "./Small/CardCube";
 const MemoCardColAudio = memo(CardColAudio);
 const MemoCardCube = memo(CardCube);
 
-// Constant animation config
-const CHILD_DURATION = 0.3;
-const VARIANTS = {
-  initial: { opacity: 0, y: 20 },
-  whileInView: { opacity: 1, y: 0 }
-};
+
 
 const Projects = () => {
-  const animationProps = useMemo(() => ({
-    initial: "initial",
-    whileInView: "whileInView",
-    viewport: { once: true, margin: "100px" }
-  }), []);
 
-  const transitionProps = useMemo(() => ({
-    duration: CHILD_DURATION,
-    transition: { duration: CHILD_DURATION }
-  }), []);
 
   return (
     <div className="py-24 sm:py-32 relative">
@@ -37,15 +22,11 @@ const Projects = () => {
         </p>
 
         {/* Grid Container */}
-        <motion.div
-          {...animationProps}
-          transition={{ staggerChildren: 0.1 }}
+        <div
           className="mt-10 grid gap-4 sm:mt-16 lg:grid-cols-3 lg:grid-rows-2 relative"
         >
           {/* Project 1 */}
-          <motion.div
-            variants={VARIANTS}
-            {...transitionProps}
+          <div
             className="lg:col-span-2"
           >
             <MemoCardColAudio
@@ -62,13 +43,11 @@ const Projects = () => {
               lgImageAlt="WebUi images"
               LearnMore="https://github.com/AliAlWahayb/WebUi-Arabic-PDF-OCR-Text-Extraction.git"
             />
-          </motion.div>
+          </div>
 
           {/* Other Projects - Follow same pattern */}
           {/* Project 2 */}
-          <motion.div
-            variants={VARIANTS}
-            {...transitionProps}
+          <div
             className="lg:col-span-1"
           >
             <MemoCardCube
@@ -82,11 +61,9 @@ const Projects = () => {
               lgImageUrl="https://i.imgur.com/z3lNVi8.png"
               lgImageAlt="Portfolio-Website V1"
             />
-          </motion.div>
+          </div>
 
-          <motion.div
-            variants={VARIANTS}
-            {...transitionProps}
+          <div
             className="lg:col-span-1"
           >
             <MemoCardCube
@@ -105,11 +82,9 @@ const Projects = () => {
               lgImageAlt="Heat Stroke Alert photo"
               LearnMore="https://github.com/AliAlWahayb/HeatStrokeAlertApp3.git"
             />
-          </motion.div>
+          </div>
 
-          <motion.div
-            variants={VARIANTS}
-            {...transitionProps}
+          <div
             className="lg:col-span-1"
           >
             <MemoCardCube
@@ -124,10 +99,8 @@ const Projects = () => {
               lgImageAlt="FastAutoClicker"
               LearnMore="https://github.com/AliAlWahayb/FastAutoClicker.git"
             />
-          </motion.div>
-          <motion.div
-            variants={VARIANTS}
-            {...transitionProps}
+          </div>
+          <div
             className="lg:col-span-1"
           >
             <MemoCardCube
@@ -141,11 +114,10 @@ const Projects = () => {
               lgImageUrl="https://i.imgur.com/cuYuQsH.png"
               lgImageAlt="Demo"
             />
-          </motion.div>
+          </div>
 
-          {/* Add remaining projects following the same optimized pattern */}
           
-        </motion.div>
+        </div>
       </div>
     </div>
   );
