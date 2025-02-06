@@ -18,7 +18,7 @@ const CoolBtn = memo(({ text, className, onClick }: CoolBtnProps) => (
       viewBox="0 0 24 24"
       strokeWidth={2}
       stroke="currentColor"
-      className="w-5 h-5 animate-bounce rotate-45 md:rotate-90"
+      className="w-5 h-5 animate-bounce md:rotate-90"
       aria-hidden="true"
     >
       <path

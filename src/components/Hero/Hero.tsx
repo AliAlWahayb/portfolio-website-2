@@ -1,11 +1,10 @@
-import React, { useState, useMemo, useCallback, useReducer } from "react";
+import React, {  useMemo, useReducer } from "react";
 import BgLight from "../Misc/BgLight";
 import SvgIcon from "./Small/SvgIcon";
 import { PiGithubLogoBold } from "react-icons/pi";
 import { TfiLinkedin } from "react-icons/tfi";
 import { HiOutlineMail } from "react-icons/hi";
 import { ReactTyped } from "react-typed";
-import Draggable from "react-draggable";
 import { Tooltip } from "react-tooltip";
 import CoolBtn from "../Misc/CoolBtn";
 
@@ -20,7 +19,6 @@ const typedReducer = (state: number, action: 'SECOND' | 'THIRD') => {
 
 const Hero: React.FC = React.memo(() => {
   const [typedState, dispatchTyped] = useReducer(typedReducer, 0);
-  const [isDragging, setIsDragging] = useState(false);
 
   // Memoized tooltip style
   const tooltipStyle = useMemo(() => ({
@@ -31,21 +29,7 @@ const Hero: React.FC = React.memo(() => {
   }), []);
 
   // Memoized draggable content
-  const renderDraggableContent = useCallback((content: React.ReactNode) => (
-    <Draggable
-      bounds="#DragArea"
-      onStart={() => setIsDragging(true)}
-      onStop={() => setIsDragging(false)}
-    >
-      <div
-        data-tooltip-id="DragTooltip"
-        data-tooltip-hidden={isDragging}
-        className={`cursor-pointer ${isDragging ? "transition-transform duration-200 ease-out" : "transition-transform duration-5000 ease-in-out"}`}
-      >
-        {content}
-      </div>
-    </Draggable>
-  ), [isDragging]);
+
 
   // Memoized typed components
   const MainTyped = useMemo(() => (
@@ -85,9 +69,9 @@ const Hero: React.FC = React.memo(() => {
       <div className="mx-auto max-w-2xl py-32 sm:py-48 lg:py-18">
         <div className="text-center select-none">
           <div className="min-h-60">
-            {renderDraggableContent(MainTyped)}
+            {(MainTyped)}
             <div className="mt-6">
-              {typedState >= 1 && renderDraggableContent(
+              {typedState >= 1 && (
                 <>
                   {SecondaryTyped}
                   {typedState >= 2 && TertiaryTyped}
