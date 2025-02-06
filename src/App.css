@@ -99,3 +99,24 @@
       -ms-overflow-style: none;  /* IE and Edge */
       scrollbar-width: none;  /* Firefox */
   }
+
+  @keyframes glow-pulse {
+    0%, 100% { opacity: 0.8; }
+    50% { opacity: 1; }
+  }
+  
+  .drop-shadow-glow {
+    filter: drop-shadow(0 0 6px rgba(255,255,255,0.5));
+  }
+  
+  .text-shadow-glow {
+    text-shadow: 0 0 8px rgba(255,255,255,0.7);
+  }
+  
+  .hover\:drop-shadow-glow:hover {
+    filter: drop-shadow(0 0 8px rgba(255,255,255,0.7));
+  }
+  
+  .hover\:text-shadow-glow:hover {
+    text-shadow: 0 0 12px rgba(255,255,255,0.9);
+  }
